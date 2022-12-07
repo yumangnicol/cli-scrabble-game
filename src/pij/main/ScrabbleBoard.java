@@ -74,6 +74,17 @@ public class ScrabbleBoard {
         }
     }
 
-
+    public void print(){
+        for(String[] row : board){
+            for(String s : row){
+                if(s.length() == 1){
+                    System.out.print(" " + s + " ");
+                } else {
+                    System.out.print(s);
+                }
+            }
+            System.out.println("");
+        }
+    }
 }
 
