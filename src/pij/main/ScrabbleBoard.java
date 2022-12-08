@@ -6,37 +6,42 @@ import java.util.ArrayList;
 
 public class ScrabbleBoard {
 
+    private String boardFile;
+    private String[][] boardMatrix;
     private int size;
-    private String[][] board;
 
-    public ScrabbleBoard() {
-        createBoard();
+    public ScrabbleBoard(String filename) {
+        this.createBoard(filename);
     }
 
-    private void setBoardSize(int size){
+    public void setSize(int size) {
         this.size = size;
-        this.board = new String[size+1][size+1];
     }
 
-    private ArrayList<String> readBoardFile(){
+    public void setBoardMatrix() {
+        this.boardMatrix = new String[size+1][size+1];
+    }
+
+    private ArrayList<String> readBoardFile(String filename) {
         ArrayList<String> lines = new ArrayList<>();
 
-        File defaultBoard = new File("./resources/defaultBoard.txt");
+        File defaultBoard = new File(filename);
         try(BufferedReader reader = new BufferedReader(new FileReader(defaultBoard))){
             StringBuilder premium = new StringBuilder();
             int value;
 
-            setBoardSize(Integer.parseInt(reader.readLine()));
+            setSize(Integer.parseInt(reader.readLine()));
+            setBoardMatrix();
 
             while((value = reader.read()) != -1){
                 if((char) value == '.'){
                     lines.add(".");
-                } else if((char) value == '}' || (char) value == ')'){
+                } else if((char) value != '\n' && (char) value != '\r' && premium.length() < 2) {
+                    premium.append((char) value);
+                } else if((char) value != '\n' && (char) value != '\r' && premium.length() == 2) {
                     premium.append((char) value);
                     lines.add(premium.toString());
                     premium = new StringBuilder();
-                } else if((char) value != '\n' && (char) value != '\r') {
-                    premium.append((char) value);
                 }
             }
         } catch (FileNotFoundException ex){
@@ -48,9 +53,9 @@ public class ScrabbleBoard {
         return lines;
     }
 
-    private void createBoard(){
-        ArrayList<String> boardFile = this.readBoardFile();
-        System.out.print(boardFile.toString());
+    private void createBoard(String filename){
+        ArrayList<String> boardFile = this.readBoardFile(filename);
+        System.out.println(boardFile.toString());
         int iterator = 0;
 
         System.out.println(this.size);
@@ -58,24 +63,24 @@ public class ScrabbleBoard {
 
         for(int i = 0; i <= this.size; i++){
             if(i == 0){
-                this.board[0][i] = " ";
+                this.boardMatrix[0][i] = " ";
             } else {
                 char c = (char) (i + 96);
-                this.board[0][i] = "" + c;
+                this.boardMatrix[0][i] = "" + c;
             }
         }
 
         for(int i = 1; i <= this.size; i++){
-            this.board[i][0] = "" + i;
+            this.boardMatrix[i][0] = "" + i;
             for(int j = 1; j <= this.size; j++){
-                this.board[i][j] = boardFile.get(iterator);
+                this.boardMatrix[i][j] = boardFile.get(iterator);
                 iterator++;
             }
         }
     }
 
     public void print(){
-        for(String[] row : board){
+        for(String[] row : boardMatrix){
             for(String s : row){
                 if(s.length() == 1){
                     System.out.print(" " + s + " ");
