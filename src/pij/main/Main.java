@@ -26,7 +26,6 @@ public class Main {
             choice = System.console().readLine();
         } while(!(choice.equals("l") || choice.equals("d")));
 
-
         switch (choice){
             case "d":
                 gameBoard = new ScrabbleBoard(DEFAULT_BOARD_FILENAME);

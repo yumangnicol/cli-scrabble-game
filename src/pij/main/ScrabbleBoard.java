@@ -1,7 +1,6 @@
 package pij.main;
 
 import java.io.*;
-import java.nio.file.Path;
 import java.util.ArrayList;
 
 public class ScrabbleBoard {
@@ -22,7 +21,7 @@ public class ScrabbleBoard {
         this.boardMatrix = new String[size+1][size+1];
     }
 
-    private ArrayList<String> readBoardFile(String filename) {
+    private ArrayList<String> readBoardFile(String filename) throws IllegalArgumentException {
         ArrayList<String> lines = new ArrayList<>();
 
         File defaultBoard = new File(filename);
@@ -34,14 +33,24 @@ public class ScrabbleBoard {
             setBoardMatrix();
 
             while((value = reader.read()) != -1){
-                if((char) value == '.'){
-                    lines.add(".");
-                } else if((char) value != '\n' && (char) value != '\r' && premium.length() < 2) {
-                    premium.append((char) value);
-                } else if((char) value != '\n' && (char) value != '\r' && premium.length() == 2) {
-                    premium.append((char) value);
-                    lines.add(premium.toString());
-                    premium = new StringBuilder();
+                System.out.println(value);
+                boolean validChar = (value == 10 || value == 46 || value == 40 || value == 41 || value == 123 || value == 125 || (value > 47 && value < 58));
+                if (!validChar) {
+                    throw new IllegalArgumentException("File not accepted. File contains illegal characters.");
+                } else {
+                    if((char) value == '.'){
+                        lines.add(".");
+                    } else if (validChar && premium.length() < 2 && (char) value != '\n'){
+                        premium.append((char) value);
+                    } else if (validChar && premium.length() == 2 && (char) value != '\n'){
+                        premium.append((char) value);
+                        if(!premium.toString().matches("\\([0-9]{2}|\\{[0-9]{2}|\\([0-9]\\)|\\{[0-9]\\}")){
+                            throw new IllegalArgumentException("File not accepted. File contains illegal format");
+                        } else {
+                            lines.add(premium.toString());
+                            premium = new StringBuilder();
+                        }
+                    }
                 }
             }
         } catch (FileNotFoundException ex){
@@ -49,7 +58,6 @@ public class ScrabbleBoard {
         } catch (IOException ex){
             ex.printStackTrace();
         }
-
         return lines;
     }
 
