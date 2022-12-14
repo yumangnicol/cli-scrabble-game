@@ -20,8 +20,14 @@ public class BoardFile {
      *
      * @author Nicol Luis Yumang
      */
-    public BoardFile(String filePath) {
-        this.boardFile = new File(filePath);
+    public BoardFile(String filePath) throws FileNotFoundException {
+        File file = new File(filePath);
+
+        if(!file.exists()){
+            throw new FileNotFoundException("File does not exist");
+        } else {
+            this.boardFile = new File(filePath);
+        }
     }
 
     /**
@@ -114,6 +120,8 @@ public class BoardFile {
                     }
                 }
             }
+        } catch (FileNotFoundException ex){
+            System.out.println(ex.getMessage());
         } catch (IOException ex){
             ex.printStackTrace();
         }
@@ -132,7 +140,7 @@ public class BoardFile {
      * @author Nicol Luis Yumang
      */
     private boolean isValidBoardSize(String strSize){
-        int MIN_SIZE = 12, MAX_SIZE = 26;
+        final int MIN_SIZE = 12, MAX_SIZE = 26;
         int size;
 
         if(strSize == null) {
@@ -159,14 +167,14 @@ public class BoardFile {
      * @author Nicol Luis Yumang
      */
     private boolean isValidBoardSquare(int value){
-        int LINE_FEED = 10;
-        int PERIOD = 46;
-        int OPEN_PARENTHESIS = 40;
-        int CLOSE_PARENTHESIS = 41;
-        int OPEN_CURLY_BRACE = 123;
-        int CLOSE_CURLY_BRACE = 125;
-        int ZERO_CHARACTER = 48;
-        int NINE_CHARACTER = 57;
+        final int LINE_FEED = 10;
+        final int PERIOD = 46;
+        final int OPEN_PARENTHESIS = 40;
+        final int CLOSE_PARENTHESIS = 41;
+        final int OPEN_CURLY_BRACE = 123;
+        final int CLOSE_CURLY_BRACE = 125;
+        final int ZERO_CHARACTER = 48;
+        final int NINE_CHARACTER = 57;
 
         return value == LINE_FEED ||
                 value == PERIOD ||

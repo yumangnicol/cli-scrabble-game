@@ -27,6 +27,7 @@ public class ScrabbleBoard {
                     System.out.print(s);
                 }
             }
+            System.out.println("");
         }
     }
 }
