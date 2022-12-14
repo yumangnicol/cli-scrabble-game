@@ -4,11 +4,38 @@ import java.io.*;
 import java.util.ArrayList;
 
 public class BoardFile {
+
+    /**
+     * The File that contains the board configuration. Always non-null.
+     */
     File boardFile;
 
-    public BoardFile(String filename) {
-        this.boardFile = new File(filename);
+    /**
+     * Constructs a new BoardFile with given filePath.
+     *
+     * @param filePath the file path of a File that represents a board.
+     *
+     * @throws NullPointerException if filePath is null.
+     * @throws FileNotFoundException if file is not found.
+     *
+     * @author Nicol Luis Yumang
+     */
+    public BoardFile(String filePath) {
+        this.boardFile = new File(filePath);
     }
+
+    /**
+     *
+     * Returns the contents of this BoardFile as a ScrabbleBoard that represents
+     * a ScrabbleBoard's Rows and Columns.
+     *
+     * Each character in the BoardFile represents a square in the ScrabbleBoard.
+     *
+     * @return a ScrabbleBoard with the contents of this BoardFile represented
+     * as contents in a ScrabbleBoard's squares.
+     *
+     * @author Nicol Luis Yumang
+     */
     public ScrabbleBoard toScrabbleBoard() {
         String[][] boardMatrix;
         ArrayList<String> boardElements = validateBoardFile();
@@ -38,6 +65,23 @@ public class BoardFile {
         }
         return new ScrabbleBoard(boardMatrix);
     }
+
+    /**
+     *
+     * Returns a validated ArrayList of Strings for each character in the BoardFile
+     * that represents a square on a ScrabbleBoard.
+     *
+     * The BoardFile is read and each element on the list is validated to check if the contents of the File
+     * has the correct format.
+     *
+     * @return
+     * @throws IllegalArgumentException if the BoardFile contains illegal characters. (Symbols, Spaces, Letters)
+     * @throws IllegalArgumentException if the BoardFile contains illegal formatting. (Double opening/closing
+     * parenthesis/curly brackets, premium square contains a number that has more than 2-digits)
+     * @throws IllegalArgumentException if the Boardfile's first line is not an integer from 12-26.
+     *
+     * @author Nicol Luis Yumang
+     */
     private ArrayList<String> validateBoardFile() throws IllegalArgumentException {
         ArrayList<String> boardSquares = new ArrayList<>();
         StringBuilder premiumSquare = new StringBuilder();
@@ -77,6 +121,18 @@ public class BoardFile {
         }
         return boardSquares;
     }
+
+    /**
+     *
+     * Returns a boolean that checks if a given String value can be converted into an integer
+     * with a value between 12-26.
+     *
+     * @param strSize a String value that should represent an integer from 12-26.
+     * @return a boolean value that checks whether the strSize parameter is a valid integer
+     * from 12-26.
+     *
+     * @author Nicol Luis Yumang
+     */
     private boolean isValidBoardSize(String strSize){
         int size;
 
@@ -96,6 +152,17 @@ public class BoardFile {
 
         return true;
     }
+
+    /**
+     *
+     * Returns a boolean that checks if a given integer value's ASCII equivalent is a valid character.
+     *
+     * @param value an integer that represents an ASCII character.
+     * @return a boolean value that checks whether the given integer value's ASCII equivalent
+     * is a valid character.
+     *
+     * @author Nicol Luis Yumang
+     */
     private boolean isValidBoardSquare(int value){
         int LINE_FEED = 10;
         int PERIOD = 46;
