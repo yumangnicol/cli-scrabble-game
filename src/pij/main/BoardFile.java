@@ -28,7 +28,6 @@ public class BoardFile {
      *
      * Returns the contents of this BoardFile as a ScrabbleBoard that represents
      * a ScrabbleBoard's Rows and Columns.
-     *
      * Each character in the BoardFile represents a square in the ScrabbleBoard.
      *
      * @return a ScrabbleBoard with the contents of this BoardFile represented
@@ -70,11 +69,10 @@ public class BoardFile {
      *
      * Returns a validated ArrayList of Strings for each character in the BoardFile
      * that represents a square on a ScrabbleBoard.
-     *
      * The BoardFile is read and each element on the list is validated to check if the contents of the File
      * has the correct format.
      *
-     * @return
+     * @return an ArrayList of Strings. Where each element in the List represents a square on a ScrabbleBoard.
      * @throws IllegalArgumentException if the BoardFile contains illegal characters. (Symbols, Spaces, Letters)
      * @throws IllegalArgumentException if the BoardFile contains illegal formatting. (Double opening/closing
      * parenthesis/curly brackets, premium square contains a number that has more than 2-digits)
@@ -134,6 +132,7 @@ public class BoardFile {
      * @author Nicol Luis Yumang
      */
     private boolean isValidBoardSize(String strSize){
+        int MIN_SIZE = 12, MAX_SIZE = 26;
         int size;
 
         if(strSize == null) {
@@ -146,11 +145,7 @@ public class BoardFile {
             return false;
         }
 
-        if(size < 12 || size > 26){
-            return false;
-        }
-
-        return true;
+        return size >= MIN_SIZE && size <= MAX_SIZE;
     }
 
     /**
@@ -173,14 +168,12 @@ public class BoardFile {
         int ZERO_CHARACTER = 48;
         int NINE_CHARACTER = 57;
 
-        boolean validChar = (
-                value == LINE_FEED ||
-                        value == PERIOD ||
-                        value == OPEN_PARENTHESIS ||
-                        value == CLOSE_PARENTHESIS ||
-                        value == OPEN_CURLY_BRACE ||
-                        value == CLOSE_CURLY_BRACE ||
-                        (value >= ZERO_CHARACTER && value <= NINE_CHARACTER));
-        return validChar;
+        return value == LINE_FEED ||
+                value == PERIOD ||
+                value == OPEN_PARENTHESIS ||
+                value == CLOSE_PARENTHESIS ||
+                value == OPEN_CURLY_BRACE ||
+                value == CLOSE_CURLY_BRACE ||
+                (value >= ZERO_CHARACTER && value <= NINE_CHARACTER);
     }
 }
