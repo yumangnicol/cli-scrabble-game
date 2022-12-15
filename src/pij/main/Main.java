@@ -6,8 +6,9 @@ public class Main {
     }
 
     private static void start(){
-        Gameplay newGame = new Gameplay();
-        newGame.initializeBoard();
+        Game newGame = new Game();
+        newGame.initializeGameBoard();
+
     }
 }
 

@@ -24,7 +24,7 @@ public class BoardFile {
         File file = new File(filePath);
 
         if(!file.exists()){
-            throw new FileNotFoundException("File does not exist");
+            throw new FileNotFoundException("File does not exist. ");
         } else {
             this.boardFile = new File(filePath);
         }
@@ -95,7 +95,7 @@ public class BoardFile {
             // Checks if first line is a valid integer from 12-26
             String strBoardSize = reader.readLine();
             if(!isValidBoardSize(strBoardSize)){
-                throw new IllegalArgumentException("File not accepted. First line of the file should be an integer from 12-26");
+                throw new IllegalArgumentException("File not accepted. First line of the file should be an integer from 12-26. ");
             }
             boardSquares.add(strBoardSize);
 
@@ -103,7 +103,7 @@ public class BoardFile {
             while((fileChar = reader.read()) != -1){
                 // Checks each character if value is valid
                 if (!this.isValidBoardSquare(fileChar)) {
-                    throw new IllegalArgumentException("File not accepted. File contains illegal characters.");
+                    throw new IllegalArgumentException("File not accepted. File contains illegal characters. ");
                 } else {
                     if((char) fileChar == '.'){
                         boardSquares.add(".");
@@ -113,7 +113,7 @@ public class BoardFile {
                         // Checks format of premium squares
                         premiumSquare.append((char) fileChar);
                         if(!premiumSquare.toString().matches("\\([0-9]{2}|\\{[0-9]{2}|\\([0-9]\\)|\\{[0-9]\\}")){
-                            throw new IllegalArgumentException("File not accepted. File contains illegal format");
+                            throw new IllegalArgumentException("File not accepted. File contains illegal format. ");
                         }
                         boardSquares.add(premiumSquare.toString());
                         premiumSquare = new StringBuilder();
