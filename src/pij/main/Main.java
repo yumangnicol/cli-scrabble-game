@@ -1,5 +1,7 @@
 package pij.main;
 
+import java.util.ArrayList;
+
 public class Main {
     public static void main(String[] args) {
 //        start();
@@ -12,7 +14,15 @@ public class Main {
         System.out.println("SHUFFLE");
 
         lb.shuffle();
-        lb.print();
+        ArrayList<Letter> rack = lb.drawLetters(7);
+        System.out.println(rack.size());
+
+        for(Letter l : rack){
+            System.out.println(l.letter);
+        }
+
+        System.out.println(lb.size());
+
     }
 
     private static void start(){
