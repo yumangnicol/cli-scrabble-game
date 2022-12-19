@@ -5,6 +5,19 @@ import java.util.ArrayList;
 public class Main {
     public static void main(String[] args) {
 //        start();
+
+        ScrabbleBoard board = null;
+        String filepath = "./resources/defaultBoard.txt";
+
+        try {
+            BoardFile file = new BoardFile(filepath);
+            board = file.toScrabbleBoard();
+        } catch (Exception ex) {
+            System.out.println(ex);
+        }
+
+        board.print();
+
         LetterBag lb = new LetterBag();
         System.out.println(lb.size());
         lb.print();
