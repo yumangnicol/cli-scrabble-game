@@ -18,7 +18,7 @@ public class Main {
         System.out.println(rack.size());
 
         for(Letter l : rack){
-            System.out.println(l.letter);
+            System.out.println(l.getLetter());
         }
 
         System.out.println(lb.size());

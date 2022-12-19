@@ -27,9 +27,10 @@ public class LetterBag {
     public int size() {
         return this.letters.size();
     }
+
     public void print() {
         for(Letter l : letters){
-            System.out.println(l.letter + " " + l.value);
+            System.out.println(l.getLetter() + " " + l.getValue());
         }
     }
 
