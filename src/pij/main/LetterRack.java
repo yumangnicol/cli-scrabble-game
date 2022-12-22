@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 public class LetterRack {
     private ArrayList<Letter> rack;
-    final private int MAX_RACK_SIZE = 7;
 
     public LetterRack(){
         this.rack = new ArrayList<>();
@@ -18,7 +17,21 @@ public class LetterRack {
         return true;
     }
 
+    public boolean contains(char letter){
+        return this.rack.contains(new Letter(letter));
+    }
+
+    public boolean containsAll(char[] letters){
+        for (char c : letters){
+            if(!this.contains(c)){
+                return false;
+            }
+        }
+        return true;
+    }
+
     private int getRackSpace() {
-        return this.MAX_RACK_SIZE - this.rack.size();
+        final int MAX_RACK_SIZE = 7;
+        return MAX_RACK_SIZE - this.rack.size();
     }
 }

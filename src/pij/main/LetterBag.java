@@ -38,7 +38,7 @@ public class LetterBag {
         ArrayList<Letter> drawnLetters = new ArrayList<>();
 
         for(int i = 0; i < count; i++){
-            int rando = (int) (Math.random() * (this.letters.size()-1)); // Generates random number from 0 to Length
+            int rando = (int) (Math.random() * (this.size()-1)); // Generates random number from 0 to Length
             drawnLetters.add(this.letters.remove(rando));
         }
 
