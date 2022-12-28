@@ -50,5 +50,37 @@ public class ScrabbleBoard {
     public int getCenterCol() {
         return centerCol;
     }
+
+
+
+    public boolean isValidMove(String moveStr){
+        final int ASCII_SUBTRACTOR = 96; // 96 because the decimal value of char a starts at 97
+        int row = Integer.parseInt(moveStr.substring(1));
+        int col = moveStr.charAt(0) - ASCII_SUBTRACTOR ;
+
+        if(row < 1 || row > this.boardMatrix.length - 1 || col < 1 || col > this.boardMatrix[0].length - 1) { // -1 because size is added 1 because of matrix headers
+            return false;
+        }
+
+        if(!isSquareEmpty(row, col)){
+            return false;
+        }
+
+        // Check  if no double word (see spec) ❗️
+
+        return true;
+    }
+
+    private boolean isSquareEmpty(int row, int col){
+        String square = boardMatrix[row][col];
+
+        System.out.print(square);
+
+        if(square.equals(".") || square.contains("(") || square.contains("{") || square.contains("}") || square.contains(")")) {
+            return true;
+        }
+
+        return false;
+    }
 }
 

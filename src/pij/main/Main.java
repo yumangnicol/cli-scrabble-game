@@ -18,23 +18,25 @@ public class Main {
 
         board.print();
 
-        LetterBag lb = new LetterBag();
-        System.out.println(lb.size());
-        lb.print();
+        System.out.print(board.isValidMove("Z6"));
 
-        System.out.println("SHUFFLE");
-        System.out.println("SHUFFLE");
-        System.out.println("SHUFFLE");
+//        LetterBag lb = new LetterBag();
+//        System.out.println(lb.size());
+//        lb.print();
 
-        lb.shuffle();
-        ArrayList<Letter> rack = lb.drawLetters(7);
-        System.out.println(rack.size());
+//        System.out.println("SHUFFLE");
+//        System.out.println("SHUFFLE");
+//        System.out.println("SHUFFLE");
 
-        for(Letter l : rack){
-            System.out.println(l.getLetter());
-        }
-
-        System.out.println(lb.size());
+//        lb.shuffle();
+//        ArrayList<Letter> rack = lb.drawLetters(7);
+//        System.out.println(rack.size());
+//
+//        for(Letter l : rack){
+//            System.out.println(l.getLetter());
+//        }
+//
+//        System.out.println(lb.size());
 
     }
 
