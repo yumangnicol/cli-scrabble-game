@@ -53,10 +53,7 @@ public class ScrabbleBoard {
 
 
 
-    public boolean isValidMove(String moveStr){
-        final int ASCII_SUBTRACTOR = 96; // 96 because the decimal value of char a starts at 97
-        int row = Integer.parseInt(moveStr.substring(1));
-        int col = moveStr.charAt(0) - ASCII_SUBTRACTOR ;
+    public boolean isValidMove(int row, int col){
 
         if(row < 1 || row > this.boardMatrix.length - 1 || col < 1 || col > this.boardMatrix[0].length - 1) { // -1 because size is added 1 because of matrix headers
             return false;
