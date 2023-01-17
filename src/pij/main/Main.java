@@ -1,7 +1,5 @@
 package pij.main;
 
-import java.util.ArrayList;
-
 public class Main {
     public static void main(String[] args) {
 //        start();
@@ -10,15 +8,15 @@ public class Main {
         String filepath = "./resources/defaultBoard.txt";
 
         try {
-            BoardFile file = new BoardFile(filepath);
-            board = file.toScrabbleBoard();
+            BoardFileReader boardFileReader = new BoardFileReader();
+            board = boardFileReader.toScrabbleBoard(filepath);
         } catch (Exception ex) {
-            System.out.println(ex);
+            System.out.println(ex.getMessage());
         }
 
         board.print();
 
-        System.out.print(board.isValidMove("Z6"));
+//        System.out.print(board.isValidMove("Z6"));
 
 //        LetterBag lb = new LetterBag();
 //        System.out.println(lb.size());

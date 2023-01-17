@@ -42,8 +42,8 @@ public class Game {
 
     private void loadBoardFile(String filename){
         try {
-            BoardFile boardFile = new BoardFile(filename);
-            this.gameBoard = boardFile.toScrabbleBoard();
+            BoardFileReader boardFileReader = new BoardFileReader();
+            this.gameBoard = boardFileReader.toScrabbleBoard(filename);
         } catch (Exception ex) {
             System.out.print(ex.getMessage());
         }
