@@ -2,19 +2,19 @@ package pij.main;
 
 public class Main {
     public static void main(String[] args) {
-//        start();
+        start();
 
-        ScrabbleBoard board = null;
-        String filepath = "./resources/defaultBoard.txt";
-
-        try {
-            BoardFileReader boardFileReader = new BoardFileReader();
-            board = boardFileReader.toScrabbleBoard(filepath);
-        } catch (Exception ex) {
-            System.out.println(ex.getMessage());
-        }
-
-        board.print();
+//        ScrabbleBoard board = null;
+//        String filepath = "./resources/defaultBoard.txt";
+//
+//        try {
+//            BoardFileReader boardFileReader = new BoardFileReader();
+//            board = boardFileReader.toScrabbleBoard(filepath);
+//        } catch (Exception ex) {
+//            System.out.println(ex.getMessage());
+//        }
+//
+//        board.print();
 
 //        System.out.print(board.isValidMove("Z6"));
 

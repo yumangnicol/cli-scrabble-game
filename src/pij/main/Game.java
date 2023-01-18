@@ -45,7 +45,7 @@ public class Game {
             BoardFileReader boardFileReader = new BoardFileReader();
             this.gameBoard = boardFileReader.toScrabbleBoard(filename);
         } catch (Exception ex) {
-            System.out.print(ex.getMessage());
+            System.out.println(ex.getMessage());
         }
     }
 }

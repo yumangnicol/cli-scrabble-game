@@ -1,5 +1,4 @@
 package pij.main;
-
 import pij.alphabet.Alphabet;
 
 public class Letter {
