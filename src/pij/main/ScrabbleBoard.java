@@ -22,10 +22,12 @@ public class ScrabbleBoard {
      * Prints the ScrabbleBoard to the console.
      */
     public void print(){
-        for(String[] row : boardMatrix){
+        for(String[] row : this.boardMatrix){
             for(String s : row){
                 if(s.length() == 1){
                     System.out.print(" " + s + " ");
+                } else if (s.length() == 2) {
+                    System.out.print(s + " ");
                 } else {
                     System.out.print(s);
                 }
@@ -51,9 +53,7 @@ public class ScrabbleBoard {
         return centerCol;
     }
 
-
-
-    public boolean isValidMove(int row, int col){
+    public boolean isValidMove(char[] letters, int row, int col, char direction){
 
         if(row < 1 || row > this.boardMatrix.length - 1 || col < 1 || col > this.boardMatrix[0].length - 1) { // -1 because size is added 1 because of matrix headers
             return false;
@@ -63,20 +63,39 @@ public class ScrabbleBoard {
             return false;
         }
 
-        // Check  if no double word (see spec) ❗️
+        // Check dictionary
 
+        return true;
+    }
+
+    public boolean placeTiles(char[] letters, int row, int col, char direction) {
+        if(direction == 'r'){
+            int counter  = 0;
+            while(counter != letters.length){
+                if(isSquareEmpty(row, col)){
+                    this.boardMatrix[row][col] = "" + letters[counter];
+                    counter++;
+                    col++;
+                }
+            }
+        } else if(direction == 'd'){
+            int counter  = 0;
+            while(counter != letters.length){
+                if(isSquareEmpty(row, col)){
+                    this.boardMatrix[row][col] = "" + letters[counter];
+                    counter++;
+                }
+                row++;
+            }
+        }
         return true;
     }
 
     private boolean isSquareEmpty(int row, int col){
         String square = boardMatrix[row][col];
-
-        System.out.print(square);
-
         if(square.equals(".") || square.contains("(") || square.contains("{") || square.contains("}") || square.contains(")")) {
             return true;
         }
-
         return false;
     }
 }
