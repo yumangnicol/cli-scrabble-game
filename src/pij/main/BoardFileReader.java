@@ -62,7 +62,7 @@ public class BoardFileReader {
                 }
             }
             // Checks if boardSize matches number of items in List
-            if(!boardSquares.get(0).equals("" + boardSquares.size())){
+            if(Integer.parseInt(boardSquares.get(0)) * Integer.parseInt(boardSquares.get(0)) != boardSquares.size()-1){
                 throw new IllegalArgumentException("File not accepted. Board size and items do not match! ");
             }
         } catch (FileNotFoundException ex) {
