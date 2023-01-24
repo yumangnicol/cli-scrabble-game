@@ -34,4 +34,18 @@ public class LetterRack {
         final int MAX_RACK_SIZE = 7;
         return MAX_RACK_SIZE - this.rack.size();
     }
+
+    public void print(){
+        StringBuilder sb = new StringBuilder();
+        String prefix = "";
+        for (Letter l : rack) {
+            sb.append(prefix);
+            prefix = ",";
+            sb.append('[');
+            sb.append(l.getLetter());
+            sb.append((l.getValue()));
+            sb.append(']');
+        }
+        System.out.println(sb);
+    }
 }
