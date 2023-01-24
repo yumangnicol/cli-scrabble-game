@@ -3,10 +3,11 @@ package pij.main;
 import java.io.*;
 import java.util.HashSet;
 
-public class WordList {
-    private HashSet<String> wordList;
+public final class WordList {
+    private static WordList INSTANCE;
+    private final HashSet<String> wordList;
 
-    public WordList() {
+    private WordList() {
         final String WORDLIST_FILE = "./resources/wordlist.txt";
         wordList = new HashSet<>();
         File file = new File(WORDLIST_FILE);
@@ -27,4 +28,10 @@ public class WordList {
         return this.wordList.contains(word);
     }
 
+    public static WordList getInstance(){
+        if(INSTANCE == null){
+            INSTANCE = new WordList();
+        }
+        return INSTANCE;
+    }
 }
