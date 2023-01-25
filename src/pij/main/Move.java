@@ -22,7 +22,7 @@ public class Move {
         if(!Character.isLowerCase(move[1].charAt(0))){
             throw new IllegalArgumentException("Move not accepted! Column should be in lower-case");
         }
-        int col = move[1].charAt(0) - ASCII_SUBTRAHEND;
+        this.col = move[1].charAt(0) - ASCII_SUBTRAHEND;
 
         try{
             this.row = Integer.parseInt(move[1].substring(1));
@@ -48,7 +48,7 @@ public class Move {
         return col;
     }
 
-    public boolean isTowardsRight() {
+    public boolean towardsRight() {
         return towardsRight;
     }
 }
