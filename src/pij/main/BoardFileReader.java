@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BoardFileReader {
-    private boolean isValidBoardSize(String strSize){
+    private boolean validBoardSize(String strSize){
         final int MIN_SIZE = 12, MAX_SIZE = 26;
         int size;
         if(strSize == null) {
@@ -18,7 +18,7 @@ public class BoardFileReader {
         }
         return size >= MIN_SIZE && size <= MAX_SIZE;
     }
-    private boolean isValidChar(int value){
+    private boolean validChar(int value){
         char c = (char) value;
         final int ZERO_CHARACTER = 48, NINE_CHARACTER = 57;
 
@@ -34,7 +34,7 @@ public class BoardFileReader {
         try(BufferedReader reader = new BufferedReader(new FileReader(file))){
             // Checks if first line is a valid integer from 12-26
             String strBoardSize = reader.readLine();
-            if(!isValidBoardSize(strBoardSize)){
+            if(!validBoardSize(strBoardSize)){
                 throw new IllegalArgumentException("File not accepted. First line of the file should be an integer from 12-26.");
             }
             boardSquares.add(strBoardSize);
@@ -43,7 +43,7 @@ public class BoardFileReader {
             while((fileChar = reader.read()) != -1){
 
                 // Checks each character if value is valid
-                if (!this.isValidChar(fileChar)) {
+                if (!this.validChar(fileChar)) {
                     throw new IllegalArgumentException("File not accepted. File contains illegal characters. ");
                 }
 
@@ -65,10 +65,10 @@ public class BoardFileReader {
             if(Integer.parseInt(boardSquares.get(0)) * Integer.parseInt(boardSquares.get(0)) != boardSquares.size()-1){
                 throw new IllegalArgumentException("File not accepted. Board size and items do not match! ");
             }
-        } catch (FileNotFoundException ex) {
+        } catch (FileNotFoundException e) {
             throw new IllegalArgumentException("File not found!");
-        } catch (IOException ex){
-            ex.printStackTrace();
+        } catch (IOException e){
+            throw new RuntimeException(e);
         }
 
         return boardSquares;
