@@ -4,15 +4,13 @@ import java.io.*;
 import java.util.HashSet;
 
 public final class WordList {
-    private static WordList INSTANCE;
-    private final HashSet<String> wordList;
+    private static final HashSet<String> wordList;
+    private static final String WORDLIST_FILE = "./resources/wordlist.txt";
 
-    private WordList() {
-        final String WORDLIST_FILE = "./resources/wordlist.txt";
+    static {
         wordList = new HashSet<>();
         File file = new File(WORDLIST_FILE);
         String line;
-
         try(BufferedReader reader = new BufferedReader(new FileReader(file))){
             while ((line = reader.readLine()) != null) {
                 wordList.add(line.trim());
@@ -24,14 +22,8 @@ public final class WordList {
         }
     }
 
-    public boolean contains(String word){
-        return this.wordList.contains(word);
-    }
-
-    public static WordList getInstance(){
-        if(INSTANCE == null){
-            INSTANCE = new WordList();
-        }
-        return INSTANCE;
+    public static boolean contains(String word){
+        return wordList.contains(word);
     }
 }
+
