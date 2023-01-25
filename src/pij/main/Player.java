@@ -1,8 +1,8 @@
 package pij.main;
 
 public class Player {
-    int score;
-    LetterRack rack;
+    private int score;
+    private LetterRack rack;
 
     public Player() {
         this.score = 0;
@@ -19,5 +19,9 @@ public class Player {
 
     public void addScore(int points) {
         this.score += points;
+    }
+
+    public LetterRack getRack() {
+        return rack;
     }
 }
