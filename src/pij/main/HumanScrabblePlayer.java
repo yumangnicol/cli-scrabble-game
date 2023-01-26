@@ -1,26 +1,25 @@
 package pij.main;
 
-public class Player {
+public class HumanScrabblePlayer implements ScrabblePlayer {
     private int score;
     private LetterRack rack;
 
-    public Player() {
-        this.score = 0;
-    }
-
-    public Player(LetterBag letterBag){
+    public HumanScrabblePlayer() {
         this.score = 0;
         this.rack = new LetterRack();
     }
 
+    @Override
     public int getScore() {
         return score;
     }
 
-    public void addScore(int points) {
+    @Override
+    public void increaseScore(int points) {
         this.score += points;
     }
 
+    @Override
     public LetterRack getRack() {
         return rack;
     }
