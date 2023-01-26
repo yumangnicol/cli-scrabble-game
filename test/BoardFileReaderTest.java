@@ -24,7 +24,7 @@ public class BoardFileReaderTest {
 
     @Test
     public void testInvalidBoardSize() {
-        String filename = "./resources/tests/invalidBoardSize.txt";
+        String filename = "./test/resources/invalidBoardSize.txt";
         Exception exception = assertThrows(IllegalArgumentException.class, () -> reader.toScrabbleBoard(filename));
 
         String expectedMessage = "File not accepted. First line of the file should be an integer from 12-26.";
@@ -35,7 +35,7 @@ public class BoardFileReaderTest {
 
     @Test
     public void testContainsIllegalCharacters() {
-        String filename = "./resources/tests/illegalCharacter.txt";
+        String filename = "./test/resources/illegalCharacter.txt";
         Exception exception = assertThrows(IllegalArgumentException.class, () -> reader.toScrabbleBoard(filename));
 
         String expectedMessage = "File not accepted. File contains illegal characters. ";
@@ -46,7 +46,7 @@ public class BoardFileReaderTest {
 
     @Test
     public void testContainsIllegalPremiumFormat() {
-        String filename = "./resources/tests/illegalPremiumFormat.txt";
+        String filename = "./test/resources/illegalPremiumFormat.txt";
         Exception exception = assertThrows(IllegalArgumentException.class, () -> reader.toScrabbleBoard(filename));
 
         String expectedMessage = "File not accepted. File contains illegal premium format. ";
@@ -56,7 +56,7 @@ public class BoardFileReaderTest {
 
     @Test
     public void testContainsIllegalFormat() {
-        String filename = "./resources/tests/illegalFormat.txt";
+        String filename = "./test/resources/illegalFormat.txt";
         Exception exception = assertThrows(IllegalArgumentException.class, () -> reader.toScrabbleBoard(filename));
 
         String expectedMessage = "File not accepted. Board size and items do not match! ";
