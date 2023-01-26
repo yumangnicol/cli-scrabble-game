@@ -1,7 +1,5 @@
 package pij.main;
 
-import pij.alphabet.Alphabet;
-
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -20,14 +18,12 @@ public class LetterBag {
             letters.add(new Letter(' '));
         }
     }
-
     public void shuffle() {
         Collections.shuffle(this.letters);
     }
     public int size() {
         return this.letters.size();
     }
-
     public void print() {
         for(Letter l : letters){
             System.out.println(l.getLetter() + " " + l.getValue());
@@ -44,6 +40,4 @@ public class LetterBag {
 
         return drawnLetters;
     }
-
-
 }

@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BoardFileReader {
-    private boolean validBoardSize(String strSize){
+    private boolean isValidBoardSize(String strSize){
         final int MIN_SIZE = 12, MAX_SIZE = 26;
         int size;
         if(strSize == null) {
@@ -18,7 +18,7 @@ public class BoardFileReader {
         }
         return size >= MIN_SIZE && size <= MAX_SIZE;
     }
-    private boolean validChar(int value){
+    private boolean isValidChar(int value){
         char c = (char) value;
         final int ZERO_CHARACTER = 48, NINE_CHARACTER = 57;
 
@@ -34,7 +34,7 @@ public class BoardFileReader {
         try(BufferedReader reader = new BufferedReader(new FileReader(file))){
             // Checks if first line is a valid integer from 12-26
             String strBoardSize = reader.readLine();
-            if(!validBoardSize(strBoardSize)){
+            if(!isValidBoardSize(strBoardSize)){
                 throw new IllegalArgumentException("File not accepted. First line of the file should be an integer from 12-26.");
             }
             boardSquares.add(strBoardSize);
@@ -43,7 +43,7 @@ public class BoardFileReader {
             while((fileChar = reader.read()) != -1){
 
                 // Checks each character if value is valid
-                if (!this.validChar(fileChar)) {
+                if (!this.isValidChar(fileChar)) {
                     throw new IllegalArgumentException("File not accepted. File contains illegal characters. ");
                 }
 

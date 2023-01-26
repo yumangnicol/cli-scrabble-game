@@ -2,15 +2,17 @@ package pij.main;
 
 public class Game {
     private ScrabbleBoard gameBoard;
-    private Player human;
-    private Player computer;
+    private ScrabblePlayer human;
+    private ScrabblePlayer computer;
+    private boolean isFirstTurn = true;
 
     public Game() {
-        this.human = new Player();
-        this.computer = new Player();
-    }
+        this.human = new HumanScrabblePlayer();
+        this.computer = new HumanScrabblePlayer();
 
-    public void initializeGameBoard() {
+        initializeGameBoard();
+    }
+    private void initializeGameBoard() {
         String choice;
         System.out.println("Would you like to _l_oad a board or use the _d_efault board?");
 
@@ -21,7 +23,7 @@ public class Game {
 
         switch (choice){
             case("d"):
-                final String DEFAULT_BOARD_FILENAME = "../../../resources/defaultBoard.txt";
+                final String DEFAULT_BOARD_FILENAME = "./resources/defaultBoard.txt";
                 this.loadBoardFile(DEFAULT_BOARD_FILENAME);
                 break;
             case("l"):
@@ -30,22 +32,47 @@ public class Game {
                 while(!fileAccepted) {
                     System.out.print("Please enter the file name of the board: ");
                     String filename = System.console().readLine();
-                    this.loadBoardFile(filename);
+                    fileAccepted = this.loadBoardFile(filename);
                 }
                 break;
             default:
                 break;
         }
-
         gameBoard.print();
     }
 
-    private void loadBoardFile(String filename){
+    private boolean loadBoardFile(String filename){
         try {
             BoardFileReader boardFileReader = new BoardFileReader();
             this.gameBoard = boardFileReader.toScrabbleBoard(filename);
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
+            return false;
         }
+        return true;
+    }
+
+    private void startGame(){
+        boolean gameEnd = false;
+
+        while(!gameEnd){
+
+
+
+
+        }
+    }
+    private void processMove(){
+        boolean moveValid = false;
+        String moveString;
+
+        while(!moveValid){
+            moveString = System.console().readLine();
+
+        }
+    }
+    public void humanTurn(){
+        System.out.println("It's your turn! Your tiles:");
+        this.human.getRack().print();
     }
 }
