@@ -1,10 +1,10 @@
 package pij.main;
 
 public class Move {
-    private char[] letters;
-    private int row;
-    private int col;
-    private boolean towardsRight;
+    private final char[] letters;
+    private final int row;
+    private final int col;
+    private final boolean isGoingRight;
 
     public Move(String moveString) {
         final int ASCII_SUBTRAHEND = 96;
@@ -33,7 +33,7 @@ public class Move {
         if(move[2].charAt(0) != 'r' || move[2].charAt(0) == 'd'){
             throw new IllegalArgumentException("Move not accepted! Direction should be in either r - right or d - down only");
         }
-        this.towardsRight = move[2].charAt(0) == 'r';
+        this.isGoingRight = move[2].charAt(0) == 'r';
     }
 
     public char[] getLetters() {
@@ -49,6 +49,6 @@ public class Move {
     }
 
     public boolean towardsRight() {
-        return towardsRight;
+        return isGoingRight;
     }
 }
