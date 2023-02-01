@@ -4,13 +4,18 @@ public class Game {
     private ScrabbleBoard gameBoard;
     private ScrabblePlayer human;
     private ScrabblePlayer computer;
+
+    private LetterBag bag;
     private boolean isFirstTurn = true;
 
     public Game() {
         this.human = new HumanScrabblePlayer();
         this.computer = new HumanScrabblePlayer();
-
+        this.bag = new LetterBag();
+        this.human.getRack().refill(this.bag, 7);
+        this.computer.getRack().refill(this.bag, 7);
         initializeGameBoard();
+        startGame();
     }
     private void initializeGameBoard() {
         String choice;
@@ -27,7 +32,6 @@ public class Game {
                 this.loadBoardFile(DEFAULT_BOARD_FILENAME);
                 break;
             case("l"):
-                System.out.print("Please enter the file name of the board: ");
                 boolean fileAccepted = false;
                 while(!fileAccepted) {
                     System.out.print("Please enter the file name of the board: ");
@@ -45,8 +49,8 @@ public class Game {
         try {
             BoardFileReader boardFileReader = new BoardFileReader();
             this.gameBoard = boardFileReader.toScrabbleBoard(filename);
-        } catch (Exception ex) {
-            System.out.println(ex.getMessage());
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
             return false;
         }
         return true;
@@ -56,23 +60,36 @@ public class Game {
         boolean gameEnd = false;
 
         while(!gameEnd){
-
-
-
-
+            humanTurn();
         }
     }
-    private void processMove(){
-        boolean moveValid = false;
-        String moveString;
 
-        while(!moveValid){
+    public void humanTurn(){
+        String moveString;
+        Move move;
+        boolean validMove = false;
+
+        while(!validMove){
+            System.out.println("It's your turn! Your tiles:");
+            this.human.getRack().print();
             moveString = System.console().readLine();
 
+            try{
+                new Move(moveString);
+                move = new Move(moveString);
+
+                // Separate this later
+                if(MoveValidator.validateMove(move, this.human, this.gameBoard, isFirstTurn)){
+                    this.gameBoard.placeLetters(move);
+                    this.gameBoard.print();
+                    validMove = true;
+                    this.isFirstTurn = false;
+                };
+            } catch (Exception e){
+                System.out.println(e.getMessage());
+            }
+
+
         }
-    }
-    public void humanTurn(){
-        System.out.println("It's your turn! Your tiles:");
-        this.human.getRack().print();
     }
 }

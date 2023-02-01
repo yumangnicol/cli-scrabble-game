@@ -10,11 +10,11 @@ public class LetterBag {
         final int ASCII_LETTER_A = 65, ASCII_LETTER_Z = 90;
         this.letters = new ArrayList<>();
         for(int i = ASCII_LETTER_A; i <= ASCII_LETTER_Z; i++){
-            for(int j = 0; j < LetterUtil.getLetterCount((char) i); j++){
+            for(int j = 0; j < LetterUtils.getLetterCount((char) i); j++){
                 letters.add((char) i);
             }
         }
-        for(int i = 0; i < LetterUtil.getLetterCount(' '); i++){
+        for(int i = 0; i < LetterUtils.getLetterCount(' '); i++){
             letters.add(' ');
         }
 //        this.shuffle();
@@ -27,7 +27,7 @@ public class LetterBag {
     }
     public void print() {
         for(char l : letters){
-            System.out.println("" + l + " " + LetterUtil.getLetterValue(l));
+            System.out.println("" + l + " " + LetterUtils.getLetterValue(l));
         }
     }
 

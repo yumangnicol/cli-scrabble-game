@@ -43,15 +43,9 @@ public class LetterRack {
             prefix = ",";
             sb.append('[');
             sb.append(l);
-            sb.append((LetterUtil.getLetterValue(l)));
+            sb.append((LetterUtils.getLetterValue(l)));
             sb.append(']');
         }
         System.out.println(sb);
-    }
-
-    // TEMPORARY
-
-    public void setRack(ArrayList<Character> rack) {
-        this.rack = rack;
     }
 }

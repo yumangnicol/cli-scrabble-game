@@ -2,7 +2,7 @@ package pij.main;
 
 public class MoveValidator {
 
-    public static boolean validateMove(Move move, ScrabblePlayer player, ScrabbleBoard board){
+    public static boolean validateMove(Move move, ScrabblePlayer player, ScrabbleBoard board, boolean isFirstMove) {
 
         if(!playerRackContainsLetters(move, player)){
             System.out.println("Player rack does not contain all the letters to play the move");
@@ -14,8 +14,14 @@ public class MoveValidator {
             return false;
         }
 
-        if(!isMoveConnected(move, board)){
+        if(isFirstMove && !isMoveInCenter(move, board)){
+            System.out.println("First move should be within the center of the board");
+            return false;
+        }
+
+        if(!isFirstMove && !isMoveConnected(move, board)){
             System.out.println("Move should be connected to existing letters on the board");
+            return false;
         }
 
         String word = getMoveWord(move, board);
@@ -32,7 +38,7 @@ public class MoveValidator {
     }
 
     public static boolean isMoveWithinBoardBounds(Move move, ScrabbleBoard board){
-        int letterCount = move.getLetters().length;
+        int moveLength = move.getLetters().length;
         int currRow = move.getRow();
         int currCol = move.getCol();
         int currCount = 0;
@@ -46,7 +52,7 @@ public class MoveValidator {
         }
 
         // Checks each square if it's out of bounds
-        while(currCount < letterCount){
+        while(currCount < moveLength){
             if(currRow < 1 || currRow > board.length() || currCol < 1 || currCol > board.length()){
                 return false;
             }
@@ -60,7 +66,7 @@ public class MoveValidator {
     }
 
     public static String getMoveWord(Move move, ScrabbleBoard board){
-        int letterCount = move.getLetters().length;
+        int moveLength = move.getLetters().length;
         int currRow = move.getRow();
         int currCol = move.getCol();
         StringBuilder word = new StringBuilder();
@@ -83,7 +89,7 @@ public class MoveValidator {
         }
 
         // Build the word body
-        while(currCount < letterCount){
+        while(currCount < moveLength){
             if(board.isSquareEmpty(currRow, currCol)){
                 word.append(move.getLetters()[currCount]);
                 currCount++;
@@ -123,4 +129,34 @@ public class MoveValidator {
         return false;
     }
 
+    public static boolean isMoveInCenter(Move move, ScrabbleBoard board){
+        int moveLength = move.getLetters().length;
+        int currCol = move.getCol();
+        int currRow = move.getRow();
+        int centerRow = board.getCenterRow();
+        int centerCol = board.getCenterCol();
+        int rowDelta = 0, colDelta = 0;
+
+        // Determine direction
+        if(move.towardsRight()){
+            currCol--;
+            colDelta = 1;
+        } else {
+            currRow--;
+            rowDelta = 1;
+        }
+
+        System.out.println(centerRow);
+        System.out.println(centerCol);
+
+        for(int i = 0; i <= moveLength; i++){
+            if(centerRow == currRow && centerCol == currCol){
+                return true;
+            }
+            currRow += rowDelta;
+            currCol += colDelta;
+        }
+
+        return false;
+    }
 }

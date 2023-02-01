@@ -1,34 +1,47 @@
 package pij.main;
 
+import java.util.ArrayList;
+
 public class Main {
     public static void main(String[] args) {
         System.out.print("ASDsad");
         start();
 
 //        ScrabbleBoard gameBoard;
+//        LetterBag bag = new LetterBag();
 //        BoardFileReader reader = new BoardFileReader();
 //        String filepath = "./src/resources/defaultBoard.txt";
 //        gameBoard = reader.toScrabbleBoard(filepath);
 //
-//        char[] tiles = {'B', 'A', 'L', 'L'};
-//        char[] tiles2 = {'L', 'L'};
-//        char[] tiles3 = {'O', 'R', 'D', 'S'};
-//        char[] tiles4 = {'O', 'O', 'O'};
-//
-//        gameBoard.placeLetters(tiles, 8,8, 'r');
-//        gameBoard.placeLetters(tiles2, 9,9, 'd');
-//        gameBoard.placeLetters(tiles3, 9,11, 'd');
 //        gameBoard.print();
-
-//        System.out.println(gameBoard.connectedMove(tiles4,12, 8, 'r'));
-
-//        Move move = new Move("BOL,a12,r");
-//        System.out.print(MoveValidator.isMoveConnected(move, gameBoard));
+//
+//        Letter l1 = new Letter('L');
+//        Letter l2 = new Letter('O');
+//        Letter l3 = new Letter('V');
+//        Letter l4 = new Letter('E');
+//        Letter l5 = new Letter('Y');
+//        Letter l6 = new Letter('O');
+//        Letter l7 = new Letter('U');
+//
+//        ArrayList<Character> drack = new ArrayList<>();
+//        drack.add('L');
+//        drack.add('O');
+//        drack.add('V');
+//        drack.add('E');
+//        drack.add('Y');
+//        drack.add('O');
+//        drack.add('U');
+//
+//        HumanScrabblePlayer player = new HumanScrabblePlayer();
+//        player.getRack().setRack(drack);
+//        player.getRack().print();
+//
+//        Move move = new Move("LOVE,f8,r");
+//        MoveValidator.validateMove(move, player, gameBoard);
     }
 
     private static void start(){
         Game newGame = new Game();
-
     }
 }
 
