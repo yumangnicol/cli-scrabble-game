@@ -3,7 +3,7 @@ package pij.main;
 import java.util.ArrayList;
 
 public class LetterRack {
-    private ArrayList<Letter> rack;
+    private ArrayList<Character> rack;
 
     public LetterRack(){
         this.rack = new ArrayList<>();
@@ -18,7 +18,7 @@ public class LetterRack {
     }
 
     public boolean contains(char letter){
-        return this.rack.contains(new Letter(letter));
+        return this.rack.contains(letter);
     }
 
     public boolean containsAll(char[] letters){
@@ -38,14 +38,20 @@ public class LetterRack {
     public void print(){
         StringBuilder sb = new StringBuilder();
         String prefix = "";
-        for (Letter l : rack) {
+        for (char l : rack) {
             sb.append(prefix);
             prefix = ",";
             sb.append('[');
-            sb.append(l.getLetter());
-            sb.append((l.getValue()));
+            sb.append(l);
+            sb.append((LetterUtil.getLetterValue(l)));
             sb.append(']');
         }
         System.out.println(sb);
+    }
+
+    // TEMPORARY
+
+    public void setRack(ArrayList<Character> rack) {
+        this.rack = rack;
     }
 }

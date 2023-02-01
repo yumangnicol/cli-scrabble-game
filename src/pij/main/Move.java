@@ -30,7 +30,7 @@ public class Move {
             throw new IllegalArgumentException("Move not accepted! Row should be in correct int format");
         }
 
-        if(move[2].charAt(0) != 'r' || move[2].charAt(0) == 'd'){
+        if(move[2].charAt(0) != 'r' && move[2].charAt(0) != 'd'){
             throw new IllegalArgumentException("Move not accepted! Direction should be in either r - right or d - down only");
         }
         this.isGoingRight = move[2].charAt(0) == 'r';

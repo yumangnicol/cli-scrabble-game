@@ -68,31 +68,53 @@ public class ScrabbleBoard {
         } else if (row <= 1) {
             return !isSquareEmpty(row+1, col);
         } else {
-            return (isSquareEmpty(row-1, col) || isSquareEmpty(row+1, col));
+            return (!isSquareEmpty(row-1, col) || !isSquareEmpty(row+1, col));
         }
 
     }
 
-    public boolean placeLetters(char[] letters, int row, int col, char direction) {
-        if(direction == 'r'){
-            int counter  = 0;
-            while(counter != letters.length){
-                if(isSquareEmpty(row, col)){
-                    this.boardMatrix[row][col] = "" + letters[counter];
-                    counter++;
-                }
-                col++;
-            }
-        } else if(direction == 'd'){
-            int counter  = 0;
-            while(counter != letters.length){
-                if(isSquareEmpty(row, col)){
-                    this.boardMatrix[row][col] = "" + letters[counter];
-                    counter++;
-                }
-                row++;
-            }
+    public boolean placeLetters(Move move) {
+        int letterCount = move.getLetters().length;
+        int currRow = move.getRow();
+        int currCol = move.getCol();
+        int currCount = 0;
+        int rowDelta = 0, colDelta = 0;
+
+        // Determine direction
+        if(move.towardsRight()){
+            colDelta = 1;
+        } else {
+            rowDelta = 1;
         }
+
+        while (currCount < letterCount){
+            if(isSquareEmpty(currRow, currCol)){
+                this.boardMatrix[currRow][currCol] = "" + move.getLetters()[currCount];
+                currCount++;
+            }
+            currRow += rowDelta;
+            currCol += colDelta;
+        }
+
+//        if(move.towardsRight()){
+//            int counter  = 0;
+//            while(counter != letters.length){
+//                if(isSquareEmpty(row, col)){
+//                    this.boardMatrix[row][col] = "" + letters[counter];
+//                    counter++;
+//                }
+//                col++;
+//            }
+//        } else if(direction == 'd'){
+//            int counter  = 0;
+//            while(counter != letters.length){
+//                if(isSquareEmpty(row, col)){
+//                    this.boardMatrix[row][col] = "" + letters[counter];
+//                    counter++;
+//                }
+//                row++;
+//            }
+//        }
         return true;
     }
 

@@ -4,20 +4,20 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class LetterBag {
-    private ArrayList<Letter> letters;
+    private ArrayList<Character> letters;
 
     public LetterBag(){
         final int ASCII_LETTER_A = 65, ASCII_LETTER_Z = 90;
-        letters = new ArrayList<>();
+        this.letters = new ArrayList<>();
         for(int i = ASCII_LETTER_A; i <= ASCII_LETTER_Z; i++){
-            for(int j = 0; j < Alphabet.getLetterCount().get((char) i); j++){
-                letters.add(new Letter((char) i));
+            for(int j = 0; j < LetterUtil.getLetterCount((char) i); j++){
+                letters.add((char) i);
             }
         }
-        for(int i = 0; i < Alphabet.getLetterCount().get(' '); i++){
-            letters.add(new Letter(' '));
+        for(int i = 0; i < LetterUtil.getLetterCount(' '); i++){
+            letters.add(' ');
         }
-        this.shuffle();
+//        this.shuffle();
     }
     public void shuffle() {
         Collections.shuffle(this.letters);
@@ -26,13 +26,13 @@ public class LetterBag {
         return this.letters.size();
     }
     public void print() {
-        for(Letter l : letters){
-            System.out.println(l.getLetter() + " " + l.getValue());
+        for(char l : letters){
+            System.out.println("" + l + " " + LetterUtil.getLetterValue(l));
         }
     }
 
-    public ArrayList<Letter> drawLetters(int count){
-        ArrayList<Letter> drawnLetters = new ArrayList<>();
+    public ArrayList<Character> drawLetters(int count){
+        ArrayList<Character> drawnLetters = new ArrayList<>();
 
         // Returns empty if bag is empty
         if(this.letters.size() == 0){
