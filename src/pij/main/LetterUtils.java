@@ -3,7 +3,7 @@ package pij.main;
 import java.util.AbstractMap;
 import java.util.Map;
 
-public class LetterUtil {
+public class LetterUtils {
     private static Map<Character, Integer> letterValue = Map.ofEntries(
             new AbstractMap.SimpleEntry<>('A', 1),
             new AbstractMap.SimpleEntry<>('B', 3),
