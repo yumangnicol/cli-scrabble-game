@@ -31,7 +31,7 @@ public class TileRack {
 
     private void removeTile(Tile tile){
         for (int i = 0; i < this.rack.size(); i++) {
-            if (tile.getLetter() == this.rack.get(i).getLetter()) {
+            if (tile.getLetter() == this.rack.get(i).getLetter() || (Character.isLowerCase(tile.getLetter()) && this.rack.get(i).getLetter() == ' ')) {
                 this.rack.remove(i);
                 return; // returns so that it only removes the first instance of the tile
             }
@@ -40,15 +40,14 @@ public class TileRack {
 
     public boolean containsAll(ArrayList<Tile> tiles){
         ArrayList<Tile> temp = (ArrayList<Tile>) this.rack.clone();
-
         for (int i = 0; i < tiles.size(); i++) {
             for (int j = 0; j < temp.size(); j++) {
-                if (tiles.get(i).getLetter() == temp.get(j).getLetter()){
+                if (tiles.get(i).getLetter() == temp.get(j).getLetter() || (Character.isLowerCase(tiles.get(i).getLetter()) && temp.get(j).getLetter() == ' ')){
                     temp.remove(j);
                 }
             }
         }
-        return temp.size() == this.rack.size() - tiles.size();
+        return temp.size() == (this.rack.size() - tiles.size());
     }
 
     private int getRackSpace() {
