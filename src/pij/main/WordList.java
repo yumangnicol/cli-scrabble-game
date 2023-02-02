@@ -13,7 +13,7 @@ public final class WordList {
         String line;
         try(BufferedReader reader = new BufferedReader(new FileReader(file))){
             while ((line = reader.readLine()) != null) {
-                wordList.add(line.trim().toUpperCase());
+                wordList.add(line.trim());
             }
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
