@@ -17,7 +17,7 @@ public class TileBag {
         for(int i = 0; i < LetterUtils.getLetterCount(' '); i++){
             tiles.add(new Tile(' '));
         }
-//        this.shuffle();
+        this.shuffle();
     }
     public void shuffle() {
         Collections.shuffle(this.tiles);
@@ -30,8 +30,7 @@ public class TileBag {
             System.out.println("" + t.getLetter() + " " + t.getValue());
         }
     }
-
-    public ArrayList<Tile> drawLetters(int count){
+    public ArrayList<Tile> drawTiles(int count){
         ArrayList<Tile> drawnLetters = new ArrayList<>();
 
         // Returns empty if bag is empty
@@ -39,7 +38,12 @@ public class TileBag {
             return drawnLetters;
         }
 
-        // Create logic here if count > letters.count
+        if(count > this.tiles.size()){
+            for (int i = 0; i < this.tiles.size(); i++) {
+                int rando = (int) (Math.random() * (this.size()-1)); // Generates random number from 0 to Length
+                drawnLetters.add(this.tiles.remove(rando));
+            }
+        }
 
         for(int i = 0; i < count; i++){
             int rando = (int) (Math.random() * (this.size()-1)); // Generates random number from 0 to Length
