@@ -35,21 +35,20 @@ public class ScrabbleBoard {
         }
     }
 
-    private void setCenterSquare(int boardSize){
-        if (boardSize % 2 != 0) {
-            this.centerRow = (boardSize / 2) + 1;
-        } else {
-            this.centerRow = (boardSize / 2);
-        }
-        this.centerCol = this.centerRow;
-    }
-
     public int getCenterRow() {
         return centerRow;
     }
 
     public int getCenterCol() {
         return centerCol;
+    }
+
+    public int length(){
+        return this.boardMatrix.length-1;
+    }
+
+    public String getSquareValue(int row, int col){
+        return boardMatrix[row][col];
     }
 
     public boolean isSquareHorizontalAdjacent(int row, int col){
@@ -73,7 +72,21 @@ public class ScrabbleBoard {
 
     }
 
-    public boolean placeTiles(Move move) {
+    public boolean isSquareEmpty(int row, int col){
+        String square = getSquareValue(row, col);
+        return square.equals(".") || square.contains("(") || square.contains("{") || square.contains("}") || square.contains(")");
+    }
+
+    private void setCenterSquare(int boardSize){
+        if (boardSize % 2 != 0) {
+            this.centerRow = (boardSize / 2) + 1;
+        } else {
+            this.centerRow = (boardSize / 2);
+        }
+        this.centerCol = this.centerRow;
+    }
+
+    public void placeTiles(Move move) {
         int letterCount = move.getTiles().size();
         int currRow = move.getRow();
         int currCol = move.getCol();
@@ -95,23 +108,6 @@ public class ScrabbleBoard {
             currRow += rowDelta;
             currCol += colDelta;
         }
-        return true;
-    }
-
-    public boolean isSquareEmpty(int row, int col){
-        String square = boardMatrix[row][col];
-        if(square.equals(".") || square.contains("(") || square.contains("{") || square.contains("}") || square.contains(")")) {
-            return true;
-        }
-        return false;
-    }
-
-    public String getSquareValue(int row, int col){
-        return boardMatrix[row][col];
-    }
-
-    public int length(){
-        return this.boardMatrix.length-1;
     }
 }
 
