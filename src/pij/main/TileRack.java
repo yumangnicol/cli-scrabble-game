@@ -13,18 +13,37 @@ public class TileRack {
         if(count == 0 || count > this.getRackSpace()) {
             return false;
         }
-        this.rack.addAll(tileBag.drawLetters(count));
+
+        ArrayList<Tile> drawn = tileBag.drawTiles(count);
+        if(drawn.size() == 0){
+            return false;
+        }
+
+        this.rack.addAll(drawn);
         return true;
     }
 
-    public boolean contains(char letter){
+    public void removeTiles(ArrayList<Tile> tiles){
+        for (Tile t : tiles) {
+            removeTile(t);
+        }
+    }
 
+    private void removeTile(Tile tile){
+        for (int i = 0; i < this.rack.size(); i++) {
+            if (tile.getLetter() == this.rack.get(i).getLetter()) {
+                this.rack.remove(i);
+                return; // returns so that it only removes the first instance of the tile
+            }
+        }
+    }
+
+    private boolean contains(char letter){
         for(Tile t : this.rack){
             if(t.getLetter() == letter){
                 return true;
             }
         }
-
         return false;
     }
 
