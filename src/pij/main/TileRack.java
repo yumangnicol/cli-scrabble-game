@@ -28,9 +28,9 @@ public class TileRack {
         return false;
     }
 
-    public boolean containsAll(char[] letters){
-        for (char c : letters){
-            if(!this.contains(c)){
+    public boolean containsAll(ArrayList<Tile> tiles){
+        for(Tile t : tiles){
+            if(!this.contains(t.getLetter())){
                 return false;
             }
         }

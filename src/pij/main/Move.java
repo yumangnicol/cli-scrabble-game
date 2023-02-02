@@ -1,7 +1,9 @@
 package pij.main;
 
+import java.util.ArrayList;
+
 public class Move {
-    private final char[] letters;
+    private final ArrayList<Tile> tiles;
     private final int row;
     private final int col;
     private final boolean isGoingRight;
@@ -17,7 +19,11 @@ public class Move {
         if(!move[0].matches("^[a-zA-Z]*$")) {
             throw new IllegalArgumentException("Move not accepted! Played word should not contain special characters");
         }
-        this.letters = move[0].toCharArray();
+
+        this.tiles = new ArrayList<>();
+        for(char c : move[0].toCharArray()){
+            this.tiles.add(new Tile(c));
+        }
 
         if(!Character.isLowerCase(move[1].charAt(0))){
             throw new IllegalArgumentException("Move not accepted! Column should be in lower-case");
@@ -36,8 +42,8 @@ public class Move {
         this.isGoingRight = move[2].charAt(0) == 'r';
     }
 
-    public char[] getLetters() {
-        return letters;
+    public ArrayList<Tile> getTiles() {
+        return tiles;
     }
 
     public int getRow() {

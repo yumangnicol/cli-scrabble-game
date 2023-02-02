@@ -80,7 +80,7 @@ public class Game {
 
                 // Separate this later
                 if(MoveValidator.validateMove(move, this.human, this.gameBoard, isFirstTurn)){
-                    this.gameBoard.placeLetters(move);
+                    this.gameBoard.placeTiles(move);
                     this.gameBoard.print();
                     validMove = true;
                     this.isFirstTurn = false;

@@ -4,8 +4,8 @@ public class MoveValidator {
 
     public static boolean validateMove(Move move, ScrabblePlayer player, ScrabbleBoard board, boolean isFirstMove) {
 
-        if(!playerRackContainsLetters(move, player)){
-            System.out.println("Player rack does not contain all the letters to play the move");
+        if(!playerRackContainsTiles(move, player)){
+            System.out.println("Player rack does not contain all the tiles to play the move");
             return false;
         }
 
@@ -20,7 +20,7 @@ public class MoveValidator {
         }
 
         if(!isFirstMove && !isMoveConnected(move, board)){
-            System.out.println("Move should be connected to existing letters on the board");
+            System.out.println("Move should be connected to existing tiles on the board");
             return false;
         }
 
@@ -33,12 +33,12 @@ public class MoveValidator {
         return true;
     }
 
-    private static boolean playerRackContainsLetters(Move move, ScrabblePlayer player){
-        return player.getRack().containsAll(move.getLetters());
+    private static boolean playerRackContainsTiles(Move move, ScrabblePlayer player){
+        return player.getRack().containsAll(move.getTiles());
     }
 
     public static boolean isMoveWithinBoardBounds(Move move, ScrabbleBoard board){
-        int moveLength = move.getLetters().length;
+        int moveLength = move.getTiles().size();
         int currRow = move.getRow();
         int currCol = move.getCol();
         int currCount = 0;
@@ -66,7 +66,7 @@ public class MoveValidator {
     }
 
     public static String getMoveWord(Move move, ScrabbleBoard board){
-        int moveLength = move.getLetters().length;
+        int moveLength = move.getTiles().size();
         int currRow = move.getRow();
         int currCol = move.getCol();
         StringBuilder word = new StringBuilder();
@@ -91,7 +91,7 @@ public class MoveValidator {
         // Build the word body
         while(currCount < moveLength){
             if(board.isSquareEmpty(currRow, currCol)){
-                word.append(move.getLetters()[currCount]);
+                word.append(move.getTiles().get(currCount).getLetter());
                 currCount++;
             } else {
                 word.append(board.getSquareValue(currRow, currCol));
@@ -100,7 +100,7 @@ public class MoveValidator {
             currCol += colDelta;
         }
 
-        // Build the rest of the word with the trailing letters
+        // Build the rest of the word with the trailing tiles
         while(!board.isSquareEmpty(currRow += rowDelta, currCol + colDelta)){
             word.append(board.getSquareValue(currRow + rowDelta, currCol + colDelta));
             currRow += rowDelta;
@@ -111,7 +111,7 @@ public class MoveValidator {
     }
 
     public static boolean isMoveConnected(Move move, ScrabbleBoard board){
-        int moveLength = move.getLetters().length;
+        int moveLength = move.getTiles().size();
         int col = move.getCol();
         int row = move.getRow();
 
@@ -130,7 +130,7 @@ public class MoveValidator {
     }
 
     public static boolean isMoveInCenter(Move move, ScrabbleBoard board){
-        int moveLength = move.getLetters().length;
+        int moveLength = move.getTiles().size();
         int currCol = move.getCol();
         int currRow = move.getRow();
         int centerRow = board.getCenterRow();

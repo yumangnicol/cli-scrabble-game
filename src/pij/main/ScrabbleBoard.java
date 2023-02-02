@@ -73,8 +73,8 @@ public class ScrabbleBoard {
 
     }
 
-    public boolean placeLetters(Move move) {
-        int letterCount = move.getLetters().length;
+    public boolean placeTiles(Move move) {
+        int letterCount = move.getTiles().size();
         int currRow = move.getRow();
         int currCol = move.getCol();
         int currCount = 0;
@@ -89,32 +89,12 @@ public class ScrabbleBoard {
 
         while (currCount < letterCount){
             if(isSquareEmpty(currRow, currCol)){
-                this.boardMatrix[currRow][currCol] = "" + move.getLetters()[currCount];
+                this.boardMatrix[currRow][currCol] = "" + move.getTiles().get(currCount).getLetter();
                 currCount++;
             }
             currRow += rowDelta;
             currCol += colDelta;
         }
-
-//        if(move.towardsRight()){
-//            int counter  = 0;
-//            while(counter != letters.length){
-//                if(isSquareEmpty(row, col)){
-//                    this.boardMatrix[row][col] = "" + letters[counter];
-//                    counter++;
-//                }
-//                col++;
-//            }
-//        } else if(direction == 'd'){
-//            int counter  = 0;
-//            while(counter != letters.length){
-//                if(isSquareEmpty(row, col)){
-//                    this.boardMatrix[row][col] = "" + letters[counter];
-//                    counter++;
-//                }
-//                row++;
-//            }
-//        }
         return true;
     }
 
