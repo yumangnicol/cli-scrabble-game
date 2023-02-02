@@ -1,14 +1,12 @@
 package pij.main;
 
-import java.util.Objects;
-
 public class Tile {
-    private char letter;
-    private int value;
+    private final char letter;
+    private final int value;
 
     public Tile(char letter) {
         this.letter = letter;
-        this.value = LetterUtils.getLetterValue(letter);
+        this.value = Character.isLowerCase(letter) ? 3 : LetterUtils.getLetterValue(letter);
     }
 
     public char getLetter() {
