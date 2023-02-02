@@ -5,13 +5,13 @@ public class Game {
     private ScrabblePlayer human;
     private ScrabblePlayer computer;
 
-    private LetterBag bag;
+    private TileBag bag;
     private boolean isFirstTurn = true;
 
     public Game() {
         this.human = new HumanScrabblePlayer();
         this.computer = new HumanScrabblePlayer();
-        this.bag = new LetterBag();
+        this.bag = new TileBag();
         this.human.getRack().refill(this.bag, 7);
         this.computer.getRack().refill(this.bag, 7);
         initializeGameBoard();

@@ -2,11 +2,11 @@ package pij.main;
 
 public class HumanScrabblePlayer implements ScrabblePlayer {
     private int score;
-    private LetterRack rack;
+    private TileRack rack;
 
     public HumanScrabblePlayer() {
         this.score = 0;
-        this.rack = new LetterRack();
+        this.rack = new TileRack();
     }
 
     @Override
@@ -20,7 +20,7 @@ public class HumanScrabblePlayer implements ScrabblePlayer {
     }
 
     @Override
-    public LetterRack getRack() {
+    public TileRack getRack() {
         return rack;
     }
 }

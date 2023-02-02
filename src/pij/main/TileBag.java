@@ -3,39 +3,39 @@ package pij.main;
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class LetterBag {
-    private ArrayList<Character> letters;
+public class TileBag {
+    private ArrayList<Tile> tiles;
 
-    public LetterBag(){
+    public TileBag(){
         final int ASCII_LETTER_A = 65, ASCII_LETTER_Z = 90;
-        this.letters = new ArrayList<>();
+        this.tiles = new ArrayList<>();
         for(int i = ASCII_LETTER_A; i <= ASCII_LETTER_Z; i++){
             for(int j = 0; j < LetterUtils.getLetterCount((char) i); j++){
-                letters.add((char) i);
+                tiles.add((new Tile((char) i)));
             }
         }
         for(int i = 0; i < LetterUtils.getLetterCount(' '); i++){
-            letters.add(' ');
+            tiles.add(new Tile(' '));
         }
 //        this.shuffle();
     }
     public void shuffle() {
-        Collections.shuffle(this.letters);
+        Collections.shuffle(this.tiles);
     }
     public int size() {
-        return this.letters.size();
+        return this.tiles.size();
     }
     public void print() {
-        for(char l : letters){
-            System.out.println("" + l + " " + LetterUtils.getLetterValue(l));
+        for(Tile t : tiles){
+            System.out.println("" + t.getLetter() + " " + t.getValue());
         }
     }
 
-    public ArrayList<Character> drawLetters(int count){
-        ArrayList<Character> drawnLetters = new ArrayList<>();
+    public ArrayList<Tile> drawLetters(int count){
+        ArrayList<Tile> drawnLetters = new ArrayList<>();
 
         // Returns empty if bag is empty
-        if(this.letters.size() == 0){
+        if(this.tiles.size() == 0){
             return drawnLetters;
         }
 
@@ -43,7 +43,7 @@ public class LetterBag {
 
         for(int i = 0; i < count; i++){
             int rando = (int) (Math.random() * (this.size()-1)); // Generates random number from 0 to Length
-            drawnLetters.add(this.letters.remove(rando));
+            drawnLetters.add(this.tiles.remove(rando));
         }
 
         return drawnLetters;

@@ -6,5 +6,5 @@ public interface ScrabblePlayer {
 
     void increaseScore(int points);
 
-    LetterRack getRack();
+    TileRack getRack();
 }

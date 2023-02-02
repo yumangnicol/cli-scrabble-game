@@ -2,23 +2,30 @@ package pij.main;
 
 import java.util.ArrayList;
 
-public class LetterRack {
-    private ArrayList<Character> rack;
+public class TileRack {
+    private ArrayList<Tile> rack;
 
-    public LetterRack(){
+    public TileRack(){
         this.rack = new ArrayList<>();
     }
 
-    public boolean refill(LetterBag letterBag, int count){
+    public boolean refill(TileBag tileBag, int count){
         if(count == 0 || count > this.getRackSpace()) {
             return false;
         }
-        this.rack.addAll(letterBag.drawLetters(count));
+        this.rack.addAll(tileBag.drawLetters(count));
         return true;
     }
 
     public boolean contains(char letter){
-        return this.rack.contains(letter);
+
+        for(Tile t : this.rack){
+            if(t.getLetter() == letter){
+                return true;
+            }
+        }
+
+        return false;
     }
 
     public boolean containsAll(char[] letters){
@@ -38,12 +45,12 @@ public class LetterRack {
     public void print(){
         StringBuilder sb = new StringBuilder();
         String prefix = "";
-        for (char l : rack) {
+        for (Tile t : rack) {
             sb.append(prefix);
             prefix = ",";
             sb.append('[');
-            sb.append(l);
-            sb.append((LetterUtils.getLetterValue(l)));
+            sb.append(t.getLetter());
+            sb.append((t.getValue()));
             sb.append(']');
         }
         System.out.println(sb);
