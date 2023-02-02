@@ -82,6 +82,12 @@ public class Game {
                 if(MoveValidator.validateMove(move, this.human, this.gameBoard, isFirstTurn)){
                     this.gameBoard.placeTiles(move);
                     this.gameBoard.print();
+
+                    this.human.getRack().removeTiles(move.getTiles());
+                    if(!this.human.getRack().refill(this.bag, move.getTiles().size())){
+                        System.out.println("Bag empty!");
+                    }
+
                     validMove = true;
                     this.isFirstTurn = false;
                 };
