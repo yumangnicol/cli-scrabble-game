@@ -38,22 +38,17 @@ public class TileRack {
         }
     }
 
-    private boolean contains(char letter){
-        for(Tile t : this.rack){
-            if(t.getLetter() == letter){
-                return true;
-            }
-        }
-        return false;
-    }
-
     public boolean containsAll(ArrayList<Tile> tiles){
-        for(Tile t : tiles){
-            if(!this.contains(t.getLetter())){
-                return false;
+        ArrayList<Tile> temp = (ArrayList<Tile>) this.rack.clone();
+
+        for (int i = 0; i < tiles.size(); i++) {
+            for (int j = 0; j < temp.size(); j++) {
+                if (tiles.get(i).getLetter() == temp.get(j).getLetter()){
+                    temp.remove(j);
+                }
             }
         }
-        return true;
+        return temp.size() == this.rack.size() - tiles.size();
     }
 
     private int getRackSpace() {
