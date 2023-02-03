@@ -11,17 +11,15 @@ public class MoveWordBuilder {
 
         // Determine direction
         if(move.towardsRight()){
-            currCol--;
             colDelta = 1;
         } else {
-            currRow--;
             rowDelta = 1;
         }
 
         // Go to the start of the word
-        while(!board.isSquareEmpty(currRow + rowDelta, currCol + colDelta)){
-            currRow += rowDelta;
-            currCol += colDelta;
+        while(!board.isSquareEmpty(currRow - rowDelta, currCol - colDelta)){
+            currRow -= rowDelta;
+            currCol -= colDelta;
         }
 
         // Build the word body
@@ -37,7 +35,7 @@ public class MoveWordBuilder {
         }
 
         // Build the rest of the word with the trailing tiles
-        while(!board.isSquareEmpty(currRow += rowDelta, currCol + colDelta)){
+        while(!board.isSquareEmpty(currRow + rowDelta, currCol + colDelta)){
             word.append(board.getSquareValue(currRow + rowDelta, currCol + colDelta));
             currRow += rowDelta;
             currCol += colDelta;
