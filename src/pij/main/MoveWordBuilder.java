@@ -17,7 +17,7 @@ public class MoveWordBuilder {
         }
 
         // Go to the start of the word
-        while(!board.isSquareEmpty(currRow - rowDelta, currCol - colDelta)){
+        while(currRow - rowDelta > 1 && currCol - colDelta > 1 && !board.isSquareEmpty(currRow - rowDelta, currCol - colDelta)){
             currRow -= rowDelta;
             currCol -= colDelta;
         }
@@ -35,7 +35,7 @@ public class MoveWordBuilder {
         }
 
         // Build the rest of the word with the trailing tiles
-        while(!board.isSquareEmpty(currRow + rowDelta, currCol + colDelta)){
+        while(currCol < board.length() && currRow < board.length() && !board.isSquareEmpty(currRow + rowDelta, currCol + colDelta)){
             word.append(board.getSquareValue(currRow + rowDelta, currCol + colDelta));
             currRow += rowDelta;
             currCol += colDelta;
