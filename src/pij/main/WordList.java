@@ -16,7 +16,7 @@ public final class WordList {
                 wordList.add(line.trim());
             }
         } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
+            throw new IllegalArgumentException("Wordlist file not found!");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

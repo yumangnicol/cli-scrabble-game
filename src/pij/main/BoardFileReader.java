@@ -66,7 +66,7 @@ public class BoardFileReader {
                 throw new IllegalArgumentException("File not accepted. Board size and items do not match! ");
             }
         } catch (FileNotFoundException e) {
-            throw new IllegalArgumentException("File not found!");
+            throw new IllegalArgumentException("Board file not found!");
         } catch (IOException e){
             throw new RuntimeException(e);
         }
