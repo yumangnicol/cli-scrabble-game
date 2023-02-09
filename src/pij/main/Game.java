@@ -1,5 +1,7 @@
 package pij.main;
 
+import java.awt.*;
+
 public class Game {
     private ScrabbleBoard gameBoard;
     private ScrabblePlayer human;
@@ -80,6 +82,7 @@ public class Game {
 
                 // Separate this later
                 if(MoveValidator.validateMove(move, this.human, this.gameBoard, isFirstTurn)){
+                    System.out.println("POINTS: " + PointCalculator.calculatePoints(move, this.gameBoard));
                     this.gameBoard.placeTiles(move);
                     this.gameBoard.print();
 
@@ -90,8 +93,9 @@ public class Game {
 
                     validMove = true;
                     this.isFirstTurn = false;
+
                 };
-            } catch (Exception e){
+            } catch (IllegalArgumentException e){
                 System.out.println(e.getMessage());
             }
 
