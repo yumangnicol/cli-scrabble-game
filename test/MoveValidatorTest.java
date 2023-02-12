@@ -45,4 +45,35 @@ public class MoveValidatorTest {
         boolean result = MoveValidator.validateMove(move, rack, board, true);
         assertFalse(result);
     }
+
+    @Test
+    void moveOutOfBounds() {
+        Move move = new Move("JAVA,h13,d");
+        boolean result = MoveValidator.validateMove(move, rack, board, false);
+        assertFalse(result);
+    }
+
+    @Test
+    void moveNotCentered() {
+        Move move = new Move("JAVA,g8,d");
+        boolean result = MoveValidator.validateMove(move, rack, board, true);
+        assertFalse(result);
+    }
+
+    @Test
+    void moveNotConnected() {
+        Move move = new Move("JAVA,h8,d");
+        board.placeTiles(move);
+
+        Move move2 = new Move("T,j9,r");
+        boolean result = MoveValidator.validateMove(move2, rack, board, false);
+        assertFalse(result);
+    }
+
+    @Test
+    void moveInvalidWord() {
+        Move move = new Move("JAA,h8,d");
+        boolean result = MoveValidator.validateMove(move, rack, board, true);
+        assertFalse(result);
+    }
 }
