@@ -1,5 +1,7 @@
 package pij.main;
 
+import pij.main.utils.Constants;
+
 import java.util.ArrayList;
 
 public class Move {
@@ -16,7 +18,7 @@ public class Move {
             throw new IllegalArgumentException("Move not accepted! Invalid string format");
         }
 
-        if(!move[0].matches("^[a-zA-Z]*$")) {
+        if(!move[0].matches(Constants.MOVE_STRING_REGEX_FORMAT)) {
             throw new IllegalArgumentException("Move not accepted! Played word should not contain special characters");
         }
 

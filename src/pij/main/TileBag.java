@@ -1,5 +1,6 @@
 package pij.main;
 
+import pij.main.utils.Constants;
 import pij.main.utils.TileSettings;
 
 import java.util.ArrayList;
@@ -8,9 +9,8 @@ import java.util.Collections;
 public class TileBag {
     private final ArrayList<Tile> tiles;
     public TileBag(){
-        final int ASCII_LETTER_A = 65, ASCII_LETTER_Z = 90;
         this.tiles = new ArrayList<>();
-        for(int i = ASCII_LETTER_A; i <= ASCII_LETTER_Z; i++){
+        for(int i = Constants.CHAR_LETTER_A_INT_VALUE; i <= Constants.CHAR_LETTER_Z_INT_VALUE; i++){
             for(int j = 0; j < TileSettings.getLetterCount((char) i); j++){
                 tiles.add((new Tile((char) i)));
             }

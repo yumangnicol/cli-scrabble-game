@@ -21,10 +21,8 @@ public class BoardFileReader {
     }
     private boolean isValidChar(int value){
         char c = (char) value;
-        final int ZERO_CHARACTER = 48, NINE_CHARACTER = 57;
-
         return c == '\n' || c == '.' || c == '(' || c == ')' || c == '{' || c == '}' ||
-                (value >= ZERO_CHARACTER && value <= NINE_CHARACTER);
+                (value >= Constants.CHAR_NUMBER_0_INT_VALUE && value <= Constants.CHAR_NUMBER_9_INT_VALUE);
     }
     private List<String> readAndValidate(String filePath) throws IllegalArgumentException {
         File file = new File(filePath);
