@@ -5,21 +5,29 @@ import pij.main.player.Player;
 
 public class Game {
     private ScrabbleBoard gameBoard;
-    private Player human;
-    private Player computer;
-
-    private TileBag bag;
+    private final WordList wordList;
+    private final TileBag bag;
+    private final Player human;
+    private final Player computer;
     private boolean isFirstTurn = true;
 
     public Game() {
+        this.wordList = new WordList(Constants.DEFAULT_WORD_LIST_FILE);
+        this.bag = new TileBag();
+
         this.human = new HumanPlayer();
         this.computer = new HumanPlayer();
-        this.bag = new TileBag();
-        this.human.getRack().refill(this.bag, 7);
-        this.computer.getRack().refill(this.bag, 7);
+
+        initializePlayerRacks();
         initializeGameBoard();
         startGame();
     }
+
+    private void initializePlayerRacks(){
+        this.human.getRack().refill(this.bag, 7);
+        this.computer.getRack().refill(this.bag, 7);
+    }
+
     private void initializeGameBoard() {
         String choice;
         System.out.println("Would you like to _l_oad a board or use the _d_efault board?");
@@ -31,8 +39,7 @@ public class Game {
 
         switch (choice){
             case("d"):
-                final String DEFAULT_BOARD_FILENAME = "./resources/defaultBoard.txt";
-                this.loadBoardFile(DEFAULT_BOARD_FILENAME);
+                this.loadBoardFile(Constants.DEFAULT_BOARD_FILE);
                 break;
             case("l"):
                 boolean fileAccepted = false;
@@ -82,7 +89,7 @@ public class Game {
                 move = new Move(moveString);
 
                 // Separate this later
-                if(MoveValidator.validateMove(move, this.human.getRack(), this.gameBoard, isFirstTurn)){
+                if(MoveValidator.validateMove(move, this.human.getRack(), this.gameBoard, this.wordList, isFirstTurn)){
                     System.out.println("POINTS: " + PointCalculator.calculatePoints(move, this.gameBoard));
                     this.gameBoard.placeTiles(move);
                     this.gameBoard.print();
@@ -95,7 +102,7 @@ public class Game {
                     validMove = true;
                     this.isFirstTurn = false;
 
-                };
+                }
             } catch (IllegalArgumentException e){
                 System.out.println(e.getMessage());
             }

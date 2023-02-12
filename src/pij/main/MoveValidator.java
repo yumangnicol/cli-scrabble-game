@@ -2,7 +2,7 @@ package pij.main;
 
 public class MoveValidator {
 
-    public static boolean validateMove(Move move, TileRack rack, ScrabbleBoard board, boolean isFirstMove) {
+    public static boolean validateMove(Move move, TileRack rack, ScrabbleBoard board, WordList wordList, boolean isFirstMove) {
 
         if(!playerRackContainsTiles(move, rack)){
             System.out.println("Player rack does not contain all the tiles to play the move");
@@ -25,7 +25,7 @@ public class MoveValidator {
         }
 
         String word = MoveWordBuilder.getMoveWord(move, board);
-        if(!WordList.contains(word.toLowerCase())){
+        if(!wordList.contains(word.toLowerCase())){
             System.out.println(word + " is not a valid word to play");
             return false;
         }

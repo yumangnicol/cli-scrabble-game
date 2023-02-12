@@ -3,13 +3,12 @@ package pij.main;
 import java.io.*;
 import java.util.HashSet;
 
-public final class WordList {
-    private static final HashSet<String> wordList;
-    private static final String WORDLIST_FILE = "./resources/wordlist.txt";
+public class WordList {
+    private final HashSet<String> wordList;
 
-    static {
+    public WordList(String fileName) {
         wordList = new HashSet<>();
-        File file = new File(WORDLIST_FILE);
+        File file = new File(fileName);
         String line;
         try(BufferedReader reader = new BufferedReader(new FileReader(file))){
             while ((line = reader.readLine()) != null) {
@@ -22,8 +21,8 @@ public final class WordList {
         }
     }
 
-    public static boolean contains(String word){
-        return wordList.contains(word);
+    public  boolean contains(String word){
+        return this.wordList.contains(word);
     }
 }
 

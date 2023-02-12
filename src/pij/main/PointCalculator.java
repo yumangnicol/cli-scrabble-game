@@ -56,7 +56,6 @@ public class PointCalculator {
 
         return total * premiumWordMultiplier;
     }
-
     private static int getPremiumValue(ScrabbleBoard board, int row, int col){
         String square = board.getSquareValue(row, col);
 
