@@ -79,4 +79,16 @@ public class MoveValidatorTest {
         boolean result = MoveValidator.validateMove(move, rack, board, wordList, true);
         assertFalse(result);
     }
+
+    @Test
+    void moveCreatesTwoWords() {
+        Move move = new Move("JAVA,h8,d");
+        board.placeTiles(move);
+        Move move2 = new Move("AR,i8,r");
+        board.placeTiles(move2);
+
+        Move move3 = new Move("T,i9,r");
+        boolean result = MoveValidator.validateMove(move3, rack, board, wordList, false);
+        assertFalse(result);
+    }
 }
