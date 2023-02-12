@@ -4,17 +4,16 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class TileBag {
-    private ArrayList<Tile> tiles;
-
+    private final ArrayList<Tile> tiles;
     public TileBag(){
         final int ASCII_LETTER_A = 65, ASCII_LETTER_Z = 90;
         this.tiles = new ArrayList<>();
         for(int i = ASCII_LETTER_A; i <= ASCII_LETTER_Z; i++){
-            for(int j = 0; j < LetterUtils.getLetterCount((char) i); j++){
+            for(int j = 0; j < TileUtils.getLetterCount((char) i); j++){
                 tiles.add((new Tile((char) i)));
             }
         }
-        for(int i = 0; i < LetterUtils.getLetterCount(' '); i++){
+        for(int i = 0; i < TileUtils.getLetterCount(' '); i++){
             tiles.add(new Tile(' '));
         }
         this.shuffle();
@@ -24,11 +23,6 @@ public class TileBag {
     }
     public int size() {
         return this.tiles.size();
-    }
-    public void print() {
-        for(Tile t : tiles){
-            System.out.println("" + t.getLetter() + " " + t.getValue());
-        }
     }
     public ArrayList<Tile> drawTiles(int count){
         ArrayList<Tile> drawnLetters = new ArrayList<>();

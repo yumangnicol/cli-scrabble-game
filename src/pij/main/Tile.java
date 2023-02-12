@@ -6,7 +6,7 @@ public class Tile {
 
     public Tile(char letter) {
         this.letter = letter;
-        this.value = Character.isLowerCase(letter) ? 3 : LetterUtils.getLetterValue(letter);
+        this.value = Character.isLowerCase(letter) ? 3 : TileUtils.getLetterValue(letter);
     }
 
     public char getLetter() {

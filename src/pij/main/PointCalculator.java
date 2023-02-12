@@ -40,7 +40,7 @@ public class PointCalculator {
                 if(Character.isLowerCase(square.charAt(0))) {
                     total += 3;
                 } else {
-                    total += LetterUtils.getLetterValue(square.charAt(0));
+                    total += TileUtils.getLetterValue(square.charAt(0));
                 }
             }
             currRow += rowDelta;
@@ -49,7 +49,7 @@ public class PointCalculator {
 
         while(currCol < board.length() && currRow < board.length() && !board.isSquareEmpty(currRow + rowDelta, currCol + colDelta)){
             String square = board.getSquareValue(currRow + rowDelta, currCol + colDelta);
-            total += Character.isLowerCase(square.charAt(0)) ? 3:LetterUtils.getLetterValue(square.charAt(0));
+            total += Character.isLowerCase(square.charAt(0)) ? 3: TileUtils.getLetterValue(square.charAt(0));
             currRow += rowDelta;
             currCol += colDelta;
         }

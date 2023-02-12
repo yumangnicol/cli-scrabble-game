@@ -3,8 +3,8 @@ package pij.main;
 import java.util.AbstractMap;
 import java.util.Map;
 
-public class LetterUtils {
-    private static Map<Character, Integer> letterValue = Map.ofEntries(
+public class TileUtils {
+    private static final Map<Character, Integer> letterValue = Map.ofEntries(
             new AbstractMap.SimpleEntry<>('A', 1),
             new AbstractMap.SimpleEntry<>('B', 3),
             new AbstractMap.SimpleEntry<>('C', 3),
@@ -34,7 +34,7 @@ public class LetterUtils {
             new AbstractMap.SimpleEntry<>(' ', 3)
     );
 
-    private static Map<Character, Integer> letterCount= Map.ofEntries(
+    private static final Map<Character, Integer> letterCount= Map.ofEntries(
             new AbstractMap.SimpleEntry<>('A', 9),
             new AbstractMap.SimpleEntry<>('B', 2),
             new AbstractMap.SimpleEntry<>('C', 2),
