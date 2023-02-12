@@ -63,6 +63,10 @@ public class TileRack {
         return MAX_RACK_SIZE - this.rack.size();
     }
 
+    public void setRack(ArrayList<Tile> rack) {
+        this.rack = rack;
+    }
+
     public void print(){
         StringBuilder sb = new StringBuilder();
         String prefix = "";
