@@ -6,7 +6,7 @@ public class Move {
     private final ArrayList<Tile> tiles;
     private final int row;
     private final int col;
-    private final boolean towardsRight;
+    private final boolean goingRight;
 
     public Move(String moveString) {
         final int ASCII_SUBTRAHEND = 96;
@@ -39,7 +39,7 @@ public class Move {
         if(move[2].charAt(0) != 'r' && move[2].charAt(0) != 'd'){
             throw new IllegalArgumentException("Move not accepted! Direction should be in either r - right or d - down only");
         }
-        this.towardsRight = move[2].charAt(0) == 'r';
+        this.goingRight = move[2].charAt(0) == 'r';
     }
 
     public ArrayList<Tile> getTiles() {
@@ -54,7 +54,7 @@ public class Move {
         return col;
     }
 
-    public boolean towardsRight() {
-        return towardsRight;
+    public boolean isGoingRight() {
+        return goingRight;
     }
 }

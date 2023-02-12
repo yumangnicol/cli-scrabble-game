@@ -10,7 +10,7 @@ public class MoveWordBuilder {
         int rowDelta = 0, colDelta = 0;
 
         // Determine direction
-        if(move.towardsRight()){
+        if(move.isGoingRight()){
             colDelta = 1;
         } else {
             rowDelta = 1;

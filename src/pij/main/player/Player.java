@@ -1,6 +1,8 @@
-package pij.main;
+package pij.main.player;
 
-public interface ScrabblePlayer {
+import pij.main.TileRack;
+
+public interface Player {
 
     int getScore();
 

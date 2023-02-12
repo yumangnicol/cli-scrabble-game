@@ -1,18 +1,19 @@
 package pij.main;
 
-import java.awt.*;
+import pij.main.player.HumanPlayer;
+import pij.main.player.Player;
 
 public class Game {
     private ScrabbleBoard gameBoard;
-    private ScrabblePlayer human;
-    private ScrabblePlayer computer;
+    private Player human;
+    private Player computer;
 
     private TileBag bag;
     private boolean isFirstTurn = true;
 
     public Game() {
-        this.human = new HumanScrabblePlayer();
-        this.computer = new HumanScrabblePlayer();
+        this.human = new HumanPlayer();
+        this.computer = new HumanPlayer();
         this.bag = new TileBag();
         this.human.getRack().refill(this.bag, 7);
         this.computer.getRack().refill(this.bag, 7);
@@ -81,7 +82,7 @@ public class Game {
                 move = new Move(moveString);
 
                 // Separate this later
-                if(MoveValidator.validateMove(move, this.human, this.gameBoard, isFirstTurn)){
+                if(MoveValidator.validateMove(move, this.human.getRack(), this.gameBoard, isFirstTurn)){
                     System.out.println("POINTS: " + PointCalculator.calculatePoints(move, this.gameBoard));
                     this.gameBoard.placeTiles(move);
                     this.gameBoard.print();

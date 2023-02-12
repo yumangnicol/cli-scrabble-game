@@ -50,7 +50,7 @@ public class MoveValidator {
         int rowDelta = 0, colDelta = 0;
 
         // Determine direction
-        if(move.towardsRight()){
+        if(move.isGoingRight()){
             colDelta = 1;
         } else {
             rowDelta = 1;
@@ -76,7 +76,7 @@ public class MoveValidator {
         int row = move.getRow();
 
         for(int i = 0; i < moveLength; i++){
-            if(move.towardsRight()){
+            if(move.isGoingRight()){
                 if(board.isSquareHorizontalAdjacent(row, col + i)){
                     return true;
                 }
@@ -98,7 +98,7 @@ public class MoveValidator {
         int rowDelta = 0, colDelta = 0;
 
         // Determine direction
-        if(move.towardsRight()){
+        if(move.isGoingRight()){
             currCol--;
             colDelta = 1;
         } else {
@@ -125,7 +125,7 @@ public class MoveValidator {
         int rowDelta = 0, colDelta = 0;
 
         // Determine direction
-        if(move.towardsRight()){
+        if(move.isGoingRight()){
             colDelta = 1;
         } else {
             rowDelta = 1;
@@ -133,9 +133,9 @@ public class MoveValidator {
 
         while (currCount < letterCount){
             if(board.isSquareEmpty(currRow, currCol)){
-                if(move.towardsRight() && board.isSquareVerticalAdjacent(currRow, currCol)){
+                if(move.isGoingRight() && board.isSquareVerticalAdjacent(currRow, currCol)){
                     return false;
-                } else if(!move.towardsRight() && board.isSquareHorizontalAdjacent(currRow, currCol)) {
+                } else if(!move.isGoingRight() && board.isSquareHorizontalAdjacent(currRow, currCol)) {
                     return false;
                 }
                 currCount++;

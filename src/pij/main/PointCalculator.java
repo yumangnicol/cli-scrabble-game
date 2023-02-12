@@ -11,7 +11,7 @@ public class PointCalculator {
         int currCount = 0;
         int rowDelta = 0, colDelta = 0;
 
-        if(move.towardsRight()){
+        if(move.isGoingRight()){
             colDelta = 1;
         } else {
             rowDelta = 1;

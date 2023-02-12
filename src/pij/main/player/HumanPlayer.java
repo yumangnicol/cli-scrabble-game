@@ -1,10 +1,13 @@
-package pij.main;
+package pij.main.player;
 
-public class HumanScrabblePlayer implements ScrabblePlayer {
+import pij.main.TileRack;
+import pij.main.player.Player;
+
+public class HumanPlayer implements Player {
     private int score;
     private TileRack rack;
 
-    public HumanScrabblePlayer() {
+    public HumanPlayer() {
         this.score = 0;
         this.rack = new TileRack();
     }
