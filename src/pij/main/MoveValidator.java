@@ -2,9 +2,9 @@ package pij.main;
 
 public class MoveValidator {
 
-    public static boolean validateMove(Move move, ScrabblePlayer player, ScrabbleBoard board, boolean isFirstMove) {
+    public static boolean validateMove(Move move, TileRack rack, ScrabbleBoard board, boolean isFirstMove) {
 
-        if(!playerRackContainsTiles(move, player)){
+        if(!playerRackContainsTiles(move, rack)){
             System.out.println("Player rack does not contain all the tiles to play the move");
             return false;
         }
@@ -30,11 +30,16 @@ public class MoveValidator {
             return false;
         }
 
+        if(!isMoveOneWord(move, board)){
+            System.out.println("Move should not lead to more than one word created on the board");
+            return false;
+        }
+
         return true;
     }
 
-    private static boolean playerRackContainsTiles(Move move, ScrabblePlayer player){
-        return player.getRack().containsAll(move.getTiles());
+    private static boolean playerRackContainsTiles(Move move, TileRack rack){
+        return rack.containsAll(move.getTiles());
     }
 
     public static boolean isMoveWithinBoardBounds(Move move, ScrabbleBoard board){
@@ -101,9 +106,6 @@ public class MoveValidator {
             rowDelta = 1;
         }
 
-        System.out.println(centerRow);
-        System.out.println(centerCol);
-
         for(int i = 0; i <= moveLength; i++){
             if(centerRow == currRow && centerCol == currCol){
                 return true;
@@ -113,5 +115,35 @@ public class MoveValidator {
         }
 
         return false;
+    }
+
+    private static boolean isMoveOneWord(Move move, ScrabbleBoard board){
+        int letterCount = move.getTiles().size();
+        int currRow = move.getRow();
+        int currCol = move.getCol();
+        int currCount = 0;
+        int rowDelta = 0, colDelta = 0;
+
+        // Determine direction
+        if(move.towardsRight()){
+            colDelta = 1;
+        } else {
+            rowDelta = 1;
+        }
+
+        while (currCount < letterCount){
+            if(board.isSquareEmpty(currRow, currCol)){
+                if(move.towardsRight() && board.isSquareVerticalAdjacent(currRow, currCol)){
+                    return false;
+                } else if(!move.towardsRight() && board.isSquareHorizontalAdjacent(currRow, currCol)) {
+                    return false;
+                }
+                currCount++;
+            }
+            currRow += rowDelta;
+            currCol += colDelta;
+        }
+
+        return true;
     }
 }
