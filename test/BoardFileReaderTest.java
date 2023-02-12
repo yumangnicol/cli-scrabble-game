@@ -8,7 +8,7 @@ public class BoardFileReaderTest {
     BoardFileReader reader;
 
     @BeforeEach
-    void setup(){
+    void setUp(){
         reader  = new BoardFileReader();
     }
 
