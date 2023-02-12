@@ -1,5 +1,7 @@
 package pij.main;
 
+import pij.main.utils.TileUtils;
+
 public class PointCalculator {
     public static int calculatePoints(Move move, ScrabbleBoard board){
         int total = 0;

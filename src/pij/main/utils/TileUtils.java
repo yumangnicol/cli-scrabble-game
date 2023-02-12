@@ -1,4 +1,4 @@
-package pij.main;
+package pij.main.utils;
 
 import java.util.AbstractMap;
 import java.util.Map;

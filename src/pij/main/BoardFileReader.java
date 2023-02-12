@@ -1,12 +1,13 @@
 package pij.main;
 
+import pij.main.utils.Constants;
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class BoardFileReader {
     private boolean isValidBoardSize(String strSize){
-        final int MIN_SIZE = 12, MAX_SIZE = 26;
         int size;
         if(strSize == null) {
             return false;
@@ -16,7 +17,7 @@ public class BoardFileReader {
         } catch (NumberFormatException ex){
             return false;
         }
-        return size >= MIN_SIZE && size <= MAX_SIZE;
+        return size >= Constants.MIN_BOARD_SIZE && size <= Constants.MAX_BOARD_SIZE;
     }
     private boolean isValidChar(int value){
         char c = (char) value;
@@ -54,7 +55,7 @@ public class BoardFileReader {
                 } else if (premiumSquare.length() == 2 && (char) fileChar != '\n'){
                     // Checks format of premium squares
                     premiumSquare.append((char) fileChar);
-                    if(!premiumSquare.toString().matches("\\([0-9]{2}|\\{[0-9]{2}|\\([0-9]\\)|\\{[0-9]\\}")){
+                    if(!premiumSquare.toString().matches(Constants.PREMIUM_SQUARE_REGEX_FORMAT)){
                         throw new IllegalArgumentException("File not accepted. File contains illegal premium format. ");
                     }
                     boardSquares.add(premiumSquare.toString());

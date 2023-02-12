@@ -1,5 +1,7 @@
 package pij.main;
 
+import pij.main.utils.TileUtils;
+
 public class Tile {
     private final char letter;
     private final int value;
