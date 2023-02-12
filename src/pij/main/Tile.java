@@ -1,6 +1,6 @@
 package pij.main;
 
-import pij.main.utils.TileUtils;
+import pij.main.utils.TileSettings;
 
 public class Tile {
     private final char letter;
@@ -8,7 +8,7 @@ public class Tile {
 
     public Tile(char letter) {
         this.letter = letter;
-        this.value = Character.isLowerCase(letter) ? 3 : TileUtils.getLetterValue(letter);
+        this.value = Character.isLowerCase(letter) ? 3 : TileSettings.getLetterValue(letter);
     }
 
     public char getLetter() {

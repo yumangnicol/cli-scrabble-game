@@ -1,6 +1,6 @@
 package pij.main;
 
-import pij.main.utils.TileUtils;
+import pij.main.utils.TileSettings;
 
 public class PointCalculator {
     public static int calculatePoints(Move move, ScrabbleBoard board){
@@ -42,7 +42,7 @@ public class PointCalculator {
                 if(Character.isLowerCase(square.charAt(0))) {
                     total += 3;
                 } else {
-                    total += TileUtils.getLetterValue(square.charAt(0));
+                    total += TileSettings.getLetterValue(square.charAt(0));
                 }
             }
             currRow += rowDelta;
@@ -51,7 +51,7 @@ public class PointCalculator {
 
         while(currCol < board.length() && currRow < board.length() && !board.isSquareEmpty(currRow + rowDelta, currCol + colDelta)){
             String square = board.getSquareValue(currRow + rowDelta, currCol + colDelta);
-            total += Character.isLowerCase(square.charAt(0)) ? 3: TileUtils.getLetterValue(square.charAt(0));
+            total += Character.isLowerCase(square.charAt(0)) ? 3: TileSettings.getLetterValue(square.charAt(0));
             currRow += rowDelta;
             currCol += colDelta;
         }

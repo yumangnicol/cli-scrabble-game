@@ -1,6 +1,6 @@
 package pij.main;
 
-import pij.main.utils.TileUtils;
+import pij.main.utils.TileSettings;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -11,11 +11,11 @@ public class TileBag {
         final int ASCII_LETTER_A = 65, ASCII_LETTER_Z = 90;
         this.tiles = new ArrayList<>();
         for(int i = ASCII_LETTER_A; i <= ASCII_LETTER_Z; i++){
-            for(int j = 0; j < TileUtils.getLetterCount((char) i); j++){
+            for(int j = 0; j < TileSettings.getLetterCount((char) i); j++){
                 tiles.add((new Tile((char) i)));
             }
         }
-        for(int i = 0; i < TileUtils.getLetterCount(' '); i++){
+        for(int i = 0; i < TileSettings.getLetterCount(' '); i++){
             tiles.add(new Tile(' '));
         }
         this.shuffle();
