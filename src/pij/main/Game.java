@@ -3,6 +3,7 @@ package pij.main;
 import pij.main.player.HumanPlayer;
 import pij.main.player.Player;
 import pij.main.utils.Constants;
+import pij.main.utils.MoveValidator;
 
 public class Game {
     private ScrabbleBoard gameBoard;
