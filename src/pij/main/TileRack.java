@@ -67,6 +67,10 @@ public class TileRack {
         this.rack = rack;
     }
 
+    public int size() {
+        return rack.size();
+    }
+
     public void print(){
         StringBuilder sb = new StringBuilder();
         String prefix = "";
