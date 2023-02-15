@@ -9,8 +9,8 @@ public class PointCalculator {
         int premiumWordMultiplier = 1;
 
         int moveLength = move.getTiles().size();
-        int currRow = move.getStartRow();
-        int currCol = move.getStartCol();
+        int currRow = move.getRow();
+        int currCol = move.getCol();
         int currCount = 0;
         int rowDelta = 0, colDelta = 0;
 
