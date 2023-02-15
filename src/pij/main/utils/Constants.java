@@ -9,8 +9,7 @@ public class Constants {
     public static final int MAX_BOARD_SIZE = 26;
     public static final int CHAR_LETTER_A_INT_VALUE = 65;
     public static final int CHAR_LETTER_Z_INT_VALUE = 90;
-
     public static final int CHAR_NUMBER_0_INT_VALUE = 48;
-
     public static final int CHAR_NUMBER_9_INT_VALUE = 57;
+    public static final int SEVEN_LETTER_MOVE_BONUS = 70;
 }

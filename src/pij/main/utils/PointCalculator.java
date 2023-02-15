@@ -9,8 +9,8 @@ public class PointCalculator {
         int premiumWordMultiplier = 1;
 
         int moveLength = move.getTiles().size();
-        int currRow = move.getRow();
-        int currCol = move.getCol();
+        int currRow = move.getStartRow();
+        int currCol = move.getStartCol();
         int currCount = 0;
         int rowDelta = 0, colDelta = 0;
 
@@ -57,8 +57,9 @@ public class PointCalculator {
             currCol += colDelta;
         }
 
-        return total * premiumWordMultiplier;
+        return moveLength == 7 ? (total * premiumWordMultiplier) + Constants.SEVEN_LETTER_MOVE_BONUS : total * premiumWordMultiplier;
     }
+
     private static int getPremiumValue(ScrabbleBoard board, int row, int col){
         String square = board.getSquareValue(row, col);
 
