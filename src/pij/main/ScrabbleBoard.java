@@ -43,6 +43,10 @@ public class ScrabbleBoard {
         return centerCol;
     }
 
+    public String[][] getBoardMatrix() {
+        return boardMatrix;
+    }
+
     public int length(){
         return this.boardMatrix.length-1;
     }
