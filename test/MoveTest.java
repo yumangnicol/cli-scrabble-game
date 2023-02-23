@@ -57,4 +57,15 @@ public class MoveTest {
 
         assertEquals(actualMessage, expectedMessage);
     }
+
+    @Test
+    public void testToString(){
+        String move = "GIT,g8,r";
+        Move newMove = new Move(move);
+
+        String expectedMessage = "The move is:    Word: GIT at position: g8, direction: right";
+        String actualMessage = newMove.toString();
+
+        assertEquals(actualMessage, expectedMessage);
+    }
 }

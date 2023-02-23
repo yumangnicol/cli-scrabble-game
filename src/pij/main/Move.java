@@ -59,4 +59,25 @@ public class Move {
     public boolean isGoingRight() {
         return goingRight;
     }
+
+    @Override
+    public String toString() {
+        StringBuilder moveString = new StringBuilder();
+
+        moveString.append("The move is:    Word: ");
+        for (Tile t : tiles) {
+            moveString.append(t.getLetter());
+        }
+
+        moveString.append(" at position: ");
+        char letterCol = (char) (this.col + Constants.CHAR_INT_VALUE_BEFORE_SMALL_LETTER_A);
+        moveString.append(letterCol);
+        moveString.append(row);
+
+        moveString.append(", direction: ");
+        String direction = isGoingRight() ? "right" : "left";
+        moveString.append(direction);
+
+        return moveString.toString();
+    }
 }

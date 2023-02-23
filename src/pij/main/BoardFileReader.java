@@ -85,7 +85,7 @@ public class BoardFileReader {
             if(i == 0){
                 boardMatrix[0][i] = " ";
             } else {
-                char c = (char) (i + 96);
+                char c = (char) (i + Constants.CHAR_INT_VALUE_BEFORE_SMALL_LETTER_A);
                 boardMatrix[0][i] = "" + c;
             }
         }
