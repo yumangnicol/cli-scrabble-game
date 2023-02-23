@@ -10,7 +10,7 @@ public class TileBag {
     private final ArrayList<Tile> tiles;
     public TileBag(){
         this.tiles = new ArrayList<>();
-        for(int i = Constants.CHAR_LETTER_A_INT_VALUE; i <= Constants.CHAR_LETTER_Z_INT_VALUE; i++){
+        for(int i = Constants.CHAR_CAPITAL_LETTER_A_INT_VALUE; i <= Constants.CHAR_CAPITAL_LETTER_Z_INT_VALUE; i++){
             for(int j = 0; j < TileSettings.getLetterCount((char) i); j++){
                 tiles.add((new Tile((char) i)));
             }
