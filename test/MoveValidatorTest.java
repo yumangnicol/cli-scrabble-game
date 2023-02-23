@@ -31,7 +31,7 @@ public class MoveValidatorTest {
         sampleRack.add(new Tile(' '));
         sampleRack.add(new Tile('T'));
         sampleRack.add(new Tile('P'));
-        rack.setRack(sampleRack);
+        rack.setTiles(sampleRack);
     }
 
     @AfterEach

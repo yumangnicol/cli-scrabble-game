@@ -3,10 +3,10 @@ package pij.main;
 import java.util.ArrayList;
 
 public class TileRack {
-    private ArrayList<Tile> rack;
+    private ArrayList<Tile> tiles;
 
     public TileRack(){
-        this.rack = new ArrayList<>();
+        this.tiles = new ArrayList<>();
     }
 
     public boolean refill(TileBag tileBag, int count){
@@ -19,7 +19,7 @@ public class TileRack {
             return false;
         }
 
-        this.rack.addAll(drawn);
+        this.tiles.addAll(drawn);
         return true;
     }
 
@@ -30,9 +30,9 @@ public class TileRack {
     }
 
     private void removeTile(Tile tile){
-        for (int i = 0; i < this.rack.size(); i++) {
-            if (tile.getLetter() == this.rack.get(i).getLetter() || (Character.isLowerCase(tile.getLetter()) && this.rack.get(i).getLetter() == ' ')) {
-                this.rack.remove(i);
+        for (int i = 0; i < this.tiles.size(); i++) {
+            if (tile.getLetter() == this.tiles.get(i).getLetter() || (Character.isLowerCase(tile.getLetter()) && this.tiles.get(i).getLetter() == ' ')) {
+                this.tiles.remove(i);
                 return; // returns so that it only removes the first instance of the tile
             }
         }
@@ -49,32 +49,36 @@ public class TileRack {
     }
 
     public boolean containsAll(ArrayList<Tile> tiles){
-        ArrayList<Tile> temp = (ArrayList<Tile>) this.rack.clone();
+        ArrayList<Tile> temp = (ArrayList<Tile>) this.tiles.clone();
 
         for (Tile tile : tiles) {
             this.removeTile(tile, temp);
         }
 
-        return temp.size() == (this.rack.size() - tiles.size());
+        return temp.size() == (this.tiles.size() - tiles.size());
     }
 
     private int getRackSpace() {
         final int MAX_RACK_SIZE = 7;
-        return MAX_RACK_SIZE - this.rack.size();
+        return MAX_RACK_SIZE - this.tiles.size();
     }
 
-    public void setRack(ArrayList<Tile> rack) {
-        this.rack = rack;
+    public ArrayList<Tile> getTiles() {
+        return tiles;
+    }
+
+    public void setTiles(ArrayList<Tile> tiles) {
+        this.tiles = tiles;
     }
 
     public int size() {
-        return rack.size();
+        return tiles.size();
     }
 
     public void print(){
         StringBuilder sb = new StringBuilder();
         String prefix = "";
-        for (Tile t : rack) {
+        for (Tile t : tiles) {
             sb.append(prefix);
             prefix = ",";
             sb.append('[');
