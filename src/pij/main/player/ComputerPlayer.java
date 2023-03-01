@@ -2,7 +2,6 @@ package pij.main.player;
 
 import pij.main.Move;
 import pij.main.ScrabbleBoard;
-import pij.main.TileRack;
 import pij.main.WordList;
 import pij.main.utils.Constants;
 import pij.main.utils.WordGenerator;
@@ -11,29 +10,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Optional;
 
-public class ComputerPlayer implements Player {
-    private int score;
-    private final TileRack rack;
-
-    public ComputerPlayer() {
-        this.score = 0;
-        this.rack = new TileRack();
-    }
-
-    @Override
-    public int getScore() {
-        return score;
-    }
-
-    @Override
-    public void increaseScore(int points) {
-        this.score += points;
-    }
-
-    @Override
-    public TileRack getRack() {
-        return rack;
-    }
+public class ComputerPlayer extends Player {
 
     public Move scanBoardForMove(ScrabbleBoard board, WordList wordList){
         for (int row = 1; row < board.length(); row++) {
