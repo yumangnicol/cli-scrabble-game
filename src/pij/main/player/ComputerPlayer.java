@@ -1,9 +1,15 @@
 package pij.main.player;
 
+import pij.main.Move;
 import pij.main.ScrabbleBoard;
 import pij.main.TileRack;
 import pij.main.WordList;
+import pij.main.utils.Constants;
 import pij.main.utils.WordGenerator;
+
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.Optional;
 
 public class ComputerPlayer implements Player {
     private int score;
@@ -29,28 +35,55 @@ public class ComputerPlayer implements Player {
         return rack;
     }
 
-    public void scanBoardForMove(ScrabbleBoard board, WordList wordList){
+    public Move scanBoardForMove(ScrabbleBoard board, WordList wordList){
         for (int row = 1; row < board.length(); row++) {
             for (int col = 1; col < board.length(); col++) {
 
-                // If board is not empty, check if move can be played
+                // If board is not empty, check if move can be played using this hook
                 if(!board.isSquareEmpty(row, col)){
 
                     int moveSpace = downMoveAvailableSpace(board, row, col);
                     if(moveSpace > 0){
-                        WordGenerator.generateWords(this.rack.getTiles(), moveSpace, board.getSquareValue(row, col),wordList);
+                        ArrayList<String> validMoves = WordGenerator.generateWords(this.rack.getTiles(), moveSpace, board.getSquareValue(row, col),wordList);
+                        Optional<String> optionalMove = validMoves.stream().max(Comparator.comparing(String::length));
+                        if(validMoves.size() > 0 && optionalMove.isPresent()){
+                            String finalMove = optionalMove.get();
+                            System.out.println("THE WORD " + finalMove);
+                            return constructMove(finalMove, row + 1, col, false);
+                        }
                     }
 
                     moveSpace = rightMoveAvailableSpace(board, row, col);
                     if(rightMoveAvailableSpace(board, row, col) > 0){
-
-
+                        ArrayList<String> validMoves = WordGenerator.generateWords(this.rack.getTiles(), moveSpace, board.getSquareValue(row, col),wordList);
+                        Optional<String> optionalMove = validMoves.stream().max(Comparator.comparing(String::length));
+                        if(validMoves.size() > 0 && optionalMove.isPresent()){
+                            String finalMove = optionalMove.get();
+                            System.out.println("THE WORD " + finalMove);
+                            return constructMove(finalMove, row, col + 1, true);
+                        }
                     }
 
                 }
 
             }
         }
+        return null;
+    }
+
+    public Move constructMove(String word, int row, int col, boolean goingRight){
+
+        StringBuilder sb = new StringBuilder();
+        sb.append(word.substring(1));
+        sb.append(',');
+        char rowLetter = (char) (col + Constants.CHAR_INT_VALUE_BEFORE_SMALL_LETTER_A);
+        sb.append(rowLetter);
+        sb.append(row);
+        sb.append(',');
+        char direction = goingRight ? 'r' : 'd';
+        sb.append(direction);
+
+        return new Move(sb.toString());
     }
 
     public int downMoveAvailableSpace(ScrabbleBoard board, int row, int col){
