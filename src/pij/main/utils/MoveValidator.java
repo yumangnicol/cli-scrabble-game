@@ -186,7 +186,7 @@ public class MoveValidator {
         }
 
         // Build the rest of the word with the trailing tiles
-        while(currCol < board.length() && currRow < board.length() && !board.isSquareEmpty(currRow + rowDelta, currCol + colDelta)){
+        while(currCol < board.length() && currRow < board.length() && !board.isSquareEmpty(currRow, currCol)){
             word.append(board.getSquareValue(currRow + rowDelta, currCol + colDelta));
             currRow += rowDelta;
             currCol += colDelta;
