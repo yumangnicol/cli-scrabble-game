@@ -21,7 +21,7 @@ public class PointCalculator {
         }
 
         // Go to the start of the word
-        while(currRow - rowDelta > 1 && currCol - colDelta > 1 && !board.isSquareEmpty(currRow - rowDelta, currCol - colDelta)){
+        while(currRow - rowDelta >= 1 && currCol - colDelta >= 1 && !board.isSquareEmpty(currRow - rowDelta, currCol - colDelta)){
             currRow -= rowDelta;
             currCol -= colDelta;
         }
@@ -50,8 +50,8 @@ public class PointCalculator {
             currCol += colDelta;
         }
 
-        while(currCol < board.length() && currRow < board.length() && !board.isSquareEmpty(currRow + rowDelta, currCol + colDelta)){
-            String square = board.getSquareValue(currRow + rowDelta, currCol + colDelta);
+        while(currCol <= board.length() && currRow <= board.length() && !board.isSquareEmpty(currRow, currCol)){
+            String square = board.getSquareValue(currRow, currCol);
             total += Character.isLowerCase(square.charAt(0)) ? 3: TileSettings.getLetterValue(square.charAt(0));
             currRow += rowDelta;
             currCol += colDelta;
