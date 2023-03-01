@@ -168,7 +168,7 @@ public class MoveValidator {
         }
 
         // Go to the start of the word
-        while(currRow - rowDelta > 1 && currCol - colDelta > 1 && !board.isSquareEmpty(currRow - rowDelta, currCol - colDelta)){
+        while(currRow - rowDelta >= 1 && currCol - colDelta >= 1 && !board.isSquareEmpty(currRow - rowDelta, currCol - colDelta)){
             currRow -= rowDelta;
             currCol -= colDelta;
         }
@@ -186,8 +186,8 @@ public class MoveValidator {
         }
 
         // Build the rest of the word with the trailing tiles
-        while(currCol < board.length() && currRow < board.length() && !board.isSquareEmpty(currRow, currCol)){
-            word.append(board.getSquareValue(currRow + rowDelta, currCol + colDelta));
+        while(currCol <= board.length() && currRow <= board.length() && !board.isSquareEmpty(currRow, currCol)){
+            word.append(board.getSquareValue(currRow, currCol));
             currRow += rowDelta;
             currCol += colDelta;
         }
