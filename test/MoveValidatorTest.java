@@ -4,7 +4,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import pij.main.*;
 import pij.main.utils.MoveValidator;
-
 import java.util.ArrayList;
 
 public class MoveValidatorTest {
@@ -91,5 +90,72 @@ public class MoveValidatorTest {
         Move move3 = new Move("T,i9,r");
         boolean result = MoveValidator.validateMove(move3, rack, board, wordList, false);
         assertFalse(result);
+    }
+
+    @Test
+    void moveOnBottomEdge() {
+        sampleRack = new ArrayList<>();
+        sampleRack.add(new Tile('S'));
+        sampleRack.add(new Tile(' '));
+        sampleRack.add(new Tile(' '));
+        rack.setTiles(sampleRack);
+
+        Move move = new Move("KIN,k13,d");
+        board.placeTiles(move);
+
+        Move move2 = new Move("Soo,h15,r");
+        boolean result = MoveValidator.validateMove(move2, rack, board, wordList, false);
+        assertTrue(result);
+    }
+
+    @Test
+    void moveOnTopEdge() {
+        sampleRack = new ArrayList<>();
+        sampleRack.add(new Tile('G'));
+        sampleRack.add(new Tile('O'));
+        rack.setTiles(sampleRack);
+
+        Move move = new Move("LO,h1,r");
+        board.placeTiles(move);
+
+        Move move2 = new Move("GO,j1,r");
+        boolean result = MoveValidator.validateMove(move2, rack, board, wordList, false);
+        assertTrue(result);
+    }
+
+    @Test
+    void moveOnLeftEdge() {
+        sampleRack = new ArrayList<>();
+        sampleRack.add(new Tile('L'));
+        sampleRack.add(new Tile('O'));
+        sampleRack.add(new Tile('K'));
+        rack.setTiles(sampleRack);
+
+        Move move = new Move("OLE,a3,r");
+        board.placeTiles(move);
+
+        Move move2 = new Move("LOK,a1,d");
+        boolean result = MoveValidator.validateMove(move2, rack, board, wordList, false);
+        board.placeTiles(move2);
+        board.print();
+        assertTrue(result);
+    }
+
+    @Test
+    void moveOnRightEdge() {
+        sampleRack = new ArrayList<>();
+        sampleRack.add(new Tile('L'));
+        sampleRack.add(new Tile('O'));
+        sampleRack.add(new Tile('K'));
+        rack.setTiles(sampleRack);
+
+        Move move = new Move("BOO,m6,r");
+        board.placeTiles(move);
+
+        Move move2 = new Move("LOK,o4,d");
+        boolean result = MoveValidator.validateMove(move2, rack, board, wordList, false);
+        board.placeTiles(move2);
+        board.print();
+        assertTrue(result);
     }
 }
