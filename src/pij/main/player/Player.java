@@ -21,6 +21,8 @@ public abstract class Player {
         this.score += points;
     }
 
+    public void decreaseScore(int points) { this.score -= points; }
+
     public TileRack getRack() {
         return rack;
     }
