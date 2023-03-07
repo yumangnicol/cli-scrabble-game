@@ -23,7 +23,7 @@ public class MoveGenerator {
                         if(validMoves.size() > 0 && optionalMove.isPresent()){
                             String finalMove = optionalMove.get();
                             System.out.println("THE WORD " + finalMove);
-                            return constructMove(finalMove, row + 1, col, false);
+                            return constructMove(finalMove, row + 1, col, false, false);
                         }
                     }
 
@@ -34,7 +34,7 @@ public class MoveGenerator {
                         if(validMoves.size() > 0 && optionalMove.isPresent()){
                             String finalMove = optionalMove.get();
                             System.out.println("THE WORD " + finalMove);
-                            return constructMove(finalMove, row, col + 1, true);
+                            return constructMove(finalMove, row, col + 1, true, false);
                         }
                     }
 
@@ -45,10 +45,11 @@ public class MoveGenerator {
         return null;
     }
 
-    public static Move constructMove(String word, int row, int col, boolean goingRight){
+    public static Move constructMove(String word, int row, int col, boolean goingRight, boolean firstMove){
 
         StringBuilder sb = new StringBuilder();
-        sb.append(word.substring(1));
+        String moveStr = firstMove ? word : word.substring(1);
+        sb.append(moveStr);
         sb.append(',');
         char rowLetter = (char) (col + Constants.CHAR_INT_VALUE_BEFORE_SMALL_LETTER_A);
         sb.append(rowLetter);
@@ -103,7 +104,7 @@ public class MoveGenerator {
             int row = board.getCenterRow();
             int col = board.getCenterCol() - (finalMove.length()/2);
 
-            return constructMove(finalMove, row, col, true);
+            return constructMove(finalMove, row, col, true, true);
         }
         return null;
     }
