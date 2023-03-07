@@ -4,28 +4,33 @@ import pij.main.Tile;
 import pij.main.WordList;
 
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
 
 public class WordGenerator {
-    public static ArrayList<String> generateWords(ArrayList<Tile> tiles, int maxLength, String start, WordList wordList) {
+    public static List<String> generateWords(ArrayList<Tile> tiles, int maxLength, String start, WordList wordList) {
         ArrayList<String> words = new ArrayList<>();
         maxLength = Math.min(maxLength, 8);
-        for (int length = 1; length <= maxLength; length++) {
-            generateWordsHelper(start, tiles, length, wordList, words);
-        }
-        return words;
+        HashSet<Tile> usedTiles = new HashSet<>();
+        generateWordsHelper(start, tiles, maxLength, wordList, words, usedTiles);
+        
+        return words.stream().filter(s -> !s.equals("")).toList();
     }
 
-    private static void generateWordsHelper(String currentWord, ArrayList<Tile> tiles, int maxLength, WordList wordList, ArrayList<String> words) {
+    private static void generateWordsHelper(String currentWord, ArrayList<Tile> tiles, int maxLength, WordList wordList, ArrayList<String> words, HashSet<Tile> usedTiles) {
         if (currentWord.length() > maxLength) {
             return;
         }
         if (wordList.contains(currentWord.toLowerCase()) && !words.contains(currentWord)) {
-            if(!currentWord.equals("")){
-                words.add(currentWord);
-            }
+            words.add(currentWord);
         }
         for (Tile tile : tiles) {
-            generateWordsHelper(currentWord + tile.getLetter(), tiles, maxLength, wordList, words);
+            if (!usedTiles.contains(tile)) {
+                usedTiles.add(tile);
+                generateWordsHelper(currentWord + tile.getLetter(), tiles, maxLength, wordList, words, usedTiles);
+                usedTiles.remove(tile);
+            }
         }
     }
+
 }
