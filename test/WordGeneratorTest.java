@@ -16,13 +16,13 @@ public class WordGeneratorTest {
     void setUp() {
         wordList = new WordList("./src/resources/wordlist.txt");
         tiles = new ArrayList<>();
-        tiles.add(new Tile('J'));
+        tiles.add(new Tile('N'));
         tiles.add(new Tile('A'));
-        tiles.add(new Tile('V'));
-        tiles.add(new Tile('A'));
-        tiles.add(new Tile(' '));
-        tiles.add(new Tile('T'));
-        tiles.add(new Tile('P'));
+        tiles.add(new Tile('I'));
+        tiles.add(new Tile('S'));
+        tiles.add(new Tile('U'));
+        tiles.add(new Tile('O'));
+        tiles.add(new Tile('I'));
     }
 
     @AfterEach
@@ -33,7 +33,8 @@ public class WordGeneratorTest {
 
     @Test
     void sampleTest() {
-        var list = WordGenerator.generateWords(tiles, 4, "J", wordList);
+        var list = WordGenerator.generateWords(tiles, 7, "", wordList);
+        System.out.println(list);
         int result = 4;
         assertEquals(result, list.size());
     }
