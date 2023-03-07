@@ -20,7 +20,9 @@ public class WordGenerator {
             return;
         }
         if (wordList.contains(currentWord.toLowerCase()) && !words.contains(currentWord)) {
-            words.add(currentWord);
+            if(!currentWord.equals("")){
+                words.add(currentWord);
+            }
         }
         for (Tile tile : tiles) {
             generateWordsHelper(currentWord + tile.getLetter(), tiles, maxLength, wordList, words);
