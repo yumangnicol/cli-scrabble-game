@@ -21,7 +21,6 @@ public class MoveGenerator {
                         Optional<String> optionalMove = validMoves.stream().max(Comparator.comparing(String::length));
                         if(validMoves.size() > 0){
                             String finalMove = optionalMove.get();
-                            System.out.println("THE WORD " + finalMove);
                             return constructMove(finalMove, row + 1, col, false, false);
                         }
                     }
@@ -32,7 +31,6 @@ public class MoveGenerator {
                         Optional<String> optionalMove = validMoves.stream().max(Comparator.comparing(String::length));
                         if(validMoves.size() > 0){
                             String finalMove = optionalMove.get();
-                            System.out.println("THE WORD " + finalMove);
                             return constructMove(finalMove, row, col + 1, true, false);
                         }
                     }
