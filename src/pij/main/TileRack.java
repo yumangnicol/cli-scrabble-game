@@ -1,5 +1,7 @@
 package pij.main;
 
+import pij.main.utils.Constants;
+
 import java.util.ArrayList;
 
 public class TileRack {
@@ -59,8 +61,7 @@ public class TileRack {
     }
 
     private int getRackSpace() {
-        final int MAX_RACK_SIZE = 7;
-        return MAX_RACK_SIZE - this.tiles.size();
+        return Constants.MAX_RACK_SIZE - this.tiles.size();
     }
 
     public ArrayList<Tile> getTiles() {
