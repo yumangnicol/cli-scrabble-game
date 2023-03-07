@@ -19,7 +19,7 @@ public class MoveGenerator {
                     if(moveSpace > 0){
                         List<String> validMoves = WordGenerator.generateWords(rack.getTiles(), moveSpace, board.getSquareValue(row, col),wordList);
                         Optional<String> optionalMove = validMoves.stream().max(Comparator.comparing(String::length));
-                        if(validMoves.size() > 0 && optionalMove.isPresent()){
+                        if(validMoves.size() > 0){
                             String finalMove = optionalMove.get();
                             System.out.println("THE WORD " + finalMove);
                             return constructMove(finalMove, row + 1, col, false, false);
@@ -30,7 +30,7 @@ public class MoveGenerator {
                     if(rightMoveAvailableSpace(board, row, col) > 0){
                         List<String> validMoves = WordGenerator.generateWords(rack.getTiles(), moveSpace, board.getSquareValue(row, col),wordList);
                         Optional<String> optionalMove = validMoves.stream().max(Comparator.comparing(String::length));
-                        if(validMoves.size() > 0 && optionalMove.isPresent()){
+                        if(validMoves.size() > 0){
                             String finalMove = optionalMove.get();
                             System.out.println("THE WORD " + finalMove);
                             return constructMove(finalMove, row, col + 1, true, false);
@@ -44,7 +44,7 @@ public class MoveGenerator {
         return null;
     }
 
-    public static Move constructMove(String word, int row, int col, boolean goingRight, boolean firstMove){
+    private static Move constructMove(String word, int row, int col, boolean goingRight, boolean firstMove){
 
         StringBuilder sb = new StringBuilder();
         String moveStr = firstMove ? word : word.substring(1);
@@ -60,7 +60,7 @@ public class MoveGenerator {
         return new Move(sb.toString());
     }
 
-    public static int downMoveAvailableSpace(ScrabbleBoard board, int row, int col){
+    private static int downMoveAvailableSpace(ScrabbleBoard board, int row, int col){
         int currRow = row;
         int space = 0;
         // Check: top of connecting square is not out of bounds and empty
@@ -77,7 +77,7 @@ public class MoveGenerator {
         return space;
     }
 
-    public static int rightMoveAvailableSpace(ScrabbleBoard board, int row, int col){
+    private static int rightMoveAvailableSpace(ScrabbleBoard board, int row, int col){
         int currCol = col;
         int space = 0;
         // Check: left of connecting square is not out of bounds and empty
@@ -97,7 +97,7 @@ public class MoveGenerator {
     public static Move makeFirstMove(TileRack rack, ScrabbleBoard board, WordList wordList){
         List<String> validMoves = WordGenerator.generateWords(rack.getTiles(), 7, "", wordList);
         Optional<String> optionalMove = validMoves.stream().max(Comparator.comparing(String::length));
-        if(validMoves.size() > 0 && optionalMove.isPresent()){
+        if(validMoves.size() > 0){
             String finalMove = optionalMove.get();
 
             int row = board.getCenterRow();
