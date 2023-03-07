@@ -1,14 +1,13 @@
 package pij.main;
 
-import java.util.ArrayList;
-
 public class Main {
     public static void main(String[] args) {
         start();
     }
 
     private static void start(){
-        Game newGame = new Game();
+        Game game = new Game();
+        game.startGame();
     }
 }
 
