@@ -10,14 +10,14 @@ public class WordGenerator {
         maxLength = Math.min(maxLength, 8);
         HashSet<Tile> usedTiles = new HashSet<>();
         generateWordsHelper(start, tiles, maxLength, wordList, words, usedTiles);
-        return words.stream().filter(s -> !s.equals("")).toList();
+        return words;
     }
 
     private static void generateWordsHelper(String currentWord, ArrayList<Tile> tiles, int maxLength, WordList wordList, ArrayList<String> words, HashSet<Tile> usedTiles) {
         if (currentWord.length() > maxLength) {
             return;
         }
-        if (wordList.contains(currentWord.toLowerCase()) && !words.contains(currentWord)) {
+        if (wordList.contains(currentWord.toLowerCase()) && !words.contains(currentWord) && !currentWord.isEmpty()) {
             words.add(currentWord);
         }
         for (Tile tile : tiles) {
