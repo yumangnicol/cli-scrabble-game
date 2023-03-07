@@ -1,8 +1,6 @@
-package pij.main.player;
+package pij.main;
 
-import pij.main.TileRack;
-
-public abstract class Player {
+public class Player {
     protected int score;
     protected TileRack rack;
     protected int consecutivePass;

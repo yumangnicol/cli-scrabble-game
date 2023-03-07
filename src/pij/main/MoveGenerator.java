@@ -1,18 +1,15 @@
-package pij.main.player;
+package pij.main;
 
-import pij.main.Move;
-import pij.main.ScrabbleBoard;
-import pij.main.WordList;
 import pij.main.utils.Constants;
 import pij.main.utils.WordGenerator;
 
-import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.List;
 import java.util.Optional;
 
-public class ComputerPlayer extends Player {
+public class MoveGenerator {
 
-    public Move scanBoardForMove(ScrabbleBoard board, WordList wordList){
+    public static Move scanBoardForMove(TileRack rack, ScrabbleBoard board, WordList wordList){
         for (int row = 1; row < board.length(); row++) {
             for (int col = 1; col < board.length(); col++) {
 
@@ -21,7 +18,7 @@ public class ComputerPlayer extends Player {
 
                     int moveSpace = downMoveAvailableSpace(board, row, col);
                     if(moveSpace > 0){
-                        ArrayList<String> validMoves = WordGenerator.generateWords(this.rack.getTiles(), moveSpace, board.getSquareValue(row, col),wordList);
+                        List<String> validMoves = WordGenerator.generateWords(rack.getTiles(), moveSpace, board.getSquareValue(row, col),wordList);
                         Optional<String> optionalMove = validMoves.stream().max(Comparator.comparing(String::length));
                         if(validMoves.size() > 0 && optionalMove.isPresent()){
                             String finalMove = optionalMove.get();
@@ -32,7 +29,7 @@ public class ComputerPlayer extends Player {
 
                     moveSpace = rightMoveAvailableSpace(board, row, col);
                     if(rightMoveAvailableSpace(board, row, col) > 0){
-                        ArrayList<String> validMoves = WordGenerator.generateWords(this.rack.getTiles(), moveSpace, board.getSquareValue(row, col),wordList);
+                        List<String> validMoves = WordGenerator.generateWords(rack.getTiles(), moveSpace, board.getSquareValue(row, col),wordList);
                         Optional<String> optionalMove = validMoves.stream().max(Comparator.comparing(String::length));
                         if(validMoves.size() > 0 && optionalMove.isPresent()){
                             String finalMove = optionalMove.get();
@@ -48,7 +45,7 @@ public class ComputerPlayer extends Player {
         return null;
     }
 
-    public Move constructMove(String word, int row, int col, boolean goingRight){
+    public static Move constructMove(String word, int row, int col, boolean goingRight){
 
         StringBuilder sb = new StringBuilder();
         sb.append(word.substring(1));
@@ -63,7 +60,7 @@ public class ComputerPlayer extends Player {
         return new Move(sb.toString());
     }
 
-    public int downMoveAvailableSpace(ScrabbleBoard board, int row, int col){
+    public static int downMoveAvailableSpace(ScrabbleBoard board, int row, int col){
         int currRow = row;
         int space = 0;
         // Check: top of connecting square is not out of bounds and empty
@@ -80,7 +77,7 @@ public class ComputerPlayer extends Player {
         return space;
     }
 
-    public int rightMoveAvailableSpace(ScrabbleBoard board, int row, int col){
+    public static int rightMoveAvailableSpace(ScrabbleBoard board, int row, int col){
         int currCol = col;
         int space = 0;
         // Check: left of connecting square is not out of bounds and empty
@@ -97,8 +94,8 @@ public class ComputerPlayer extends Player {
         return space;
     }
 
-    public Move makeFirstMove(ScrabbleBoard board, WordList wordList){
-        ArrayList<String> validMoves = WordGenerator.generateWords(this.rack.getTiles(), 7, "", wordList);
+    public static Move makeFirstMove(TileRack rack, ScrabbleBoard board, WordList wordList){
+        List<String> validMoves = WordGenerator.generateWords(rack.getTiles(), 7, "", wordList);
         Optional<String> optionalMove = validMoves.stream().max(Comparator.comparing(String::length));
         if(validMoves.size() > 0 && optionalMove.isPresent()){
             String finalMove = optionalMove.get();
