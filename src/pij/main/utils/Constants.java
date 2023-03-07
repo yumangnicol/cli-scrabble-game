@@ -13,5 +13,6 @@ public class Constants {
     public static final int CHAR_NUMBER_9_INT_VALUE = 57;
     public static final int SEVEN_LETTER_MOVE_BONUS = 70;
     public static final int CHAR_INT_VALUE_BEFORE_SMALL_LETTER_A = 96;
+    public static final int MAX_RACK_SIZE = 7;
     public static final String DIVIDER = "---------------------------------------------------";
 }
