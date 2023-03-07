@@ -3,7 +3,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import pij.main.Tile;
 import pij.main.WordList;
-import pij.main.utils.WordGenerator;
+import pij.main.WordGenerator;
 
 import java.util.ArrayList;
 import static org.junit.jupiter.api.Assertions.*;

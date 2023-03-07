@@ -1,7 +1,4 @@
-package pij.main.utils;
-
-import pij.main.Tile;
-import pij.main.WordList;
+package pij.main;
 
 import java.util.ArrayList;
 import java.util.HashSet;

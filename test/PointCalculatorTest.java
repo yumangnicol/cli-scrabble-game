@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 import pij.main.BoardFileReader;
 import pij.main.Move;
 import pij.main.ScrabbleBoard;
-import pij.main.utils.PointCalculator;
+import pij.main.PointCalculator;
 
 import static org.junit.jupiter.api.Assertions.*;
 

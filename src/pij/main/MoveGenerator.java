@@ -1,7 +1,6 @@
 package pij.main;
 
 import pij.main.utils.Constants;
-import pij.main.utils.WordGenerator;
 
 import java.util.Comparator;
 import java.util.List;

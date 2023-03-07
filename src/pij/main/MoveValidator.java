@@ -1,9 +1,4 @@
-package pij.main.utils;
-
-import pij.main.Move;
-import pij.main.ScrabbleBoard;
-import pij.main.TileRack;
-import pij.main.WordList;
+package pij.main;
 
 public class MoveValidator {
 
