@@ -48,7 +48,6 @@ public class Game {
             BoardFileReader boardFileReader = new BoardFileReader();
             this.gameBoard = boardFileReader.toScrabbleBoard(filename);
         } catch (Exception e) {
-//            System.out.println(e.getMessage());
             System.out.print("This is not a valid file. ");
             return false;
         }
