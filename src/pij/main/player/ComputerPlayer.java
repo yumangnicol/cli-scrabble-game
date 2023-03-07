@@ -97,4 +97,17 @@ public class ComputerPlayer extends Player {
         return space;
     }
 
+    public Move makeFirstMove(ScrabbleBoard board, WordList wordList){
+        ArrayList<String> validMoves = WordGenerator.generateWords(this.rack.getTiles(), 7, "", wordList);
+        Optional<String> optionalMove = validMoves.stream().max(Comparator.comparing(String::length));
+        if(validMoves.size() > 0 && optionalMove.isPresent()){
+            String finalMove = optionalMove.get();
+
+            int row = board.getCenterRow();
+            int col = board.getCenterCol() - (finalMove.length()/2);
+
+            return constructMove(finalMove, row, col, true);
+        }
+        return null;
+    }
 }
