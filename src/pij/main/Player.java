@@ -1,9 +1,9 @@
 package pij.main;
 
 public class Player {
-    protected int score;
-    protected TileRack rack;
-    protected int consecutivePass;
+    private int score;
+    private final TileRack rack;
+    private int consecutivePass;
 
     public Player() {
         this.score = 0;
