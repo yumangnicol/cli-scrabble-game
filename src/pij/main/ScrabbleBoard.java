@@ -5,7 +5,7 @@ public class ScrabbleBoard {
     /**
      * The String matrix that represents the rows and columns of a ScrabbleBoard.
      */
-    private String[][] boardMatrix;
+    private final String[][] boardMatrix;
     private int centerRow, centerCol;
 
     /**
@@ -31,8 +31,9 @@ public class ScrabbleBoard {
                     System.out.print(s);
                 }
             }
-            System.out.println("");
+            System.out.println();
         }
+        System.out.println();
     }
 
     public int getCenterRow() {
@@ -41,10 +42,6 @@ public class ScrabbleBoard {
 
     public int getCenterCol() {
         return centerCol;
-    }
-
-    public String[][] getBoardMatrix() {
-        return boardMatrix;
     }
 
     public int length(){
