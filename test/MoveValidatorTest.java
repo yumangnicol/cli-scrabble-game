@@ -43,28 +43,28 @@ public class MoveValidatorTest {
     }
 
     @Test
-    void rackIncompleteTiles() {
+    void testRackIncompleteTiles() {
         Move move = new Move("JAVB,h8,d");
         boolean result = MoveValidator.validateMove(move, rack, board, wordList, true);
         assertFalse(result);
     }
 
     @Test
-    void moveOutOfBounds() {
+    void testMoveOutOfBounds() {
         Move move = new Move("JAVA,h13,d");
         boolean result = MoveValidator.validateMove(move, rack, board, wordList, false);
         assertFalse(result);
     }
 
     @Test
-    void moveNotCentered() {
+    void testMoveNotCentered() {
         Move move = new Move("JAVA,g8,d");
         boolean result = MoveValidator.validateMove(move, rack, board, wordList, true);
         assertFalse(result);
     }
 
     @Test
-    void moveNotConnected() {
+    void testMoveNotConnected() {
         Move move = new Move("JAVA,h8,d");
         board.placeTiles(move);
 
@@ -74,14 +74,14 @@ public class MoveValidatorTest {
     }
 
     @Test
-    void moveInvalidWord() {
+    void testMoveInvalidWord() {
         Move move = new Move("JAA,h8,d");
         boolean result = MoveValidator.validateMove(move, rack, board, wordList, true);
         assertFalse(result);
     }
 
     @Test
-    void moveCreatesTwoWords() {
+    void testMoveCreatesTwoWords() {
         Move move = new Move("JAVA,h8,d");
         board.placeTiles(move);
         Move move2 = new Move("AR,i8,r");
@@ -93,7 +93,7 @@ public class MoveValidatorTest {
     }
 
     @Test
-    void moveOnBottomEdge() {
+    void testMoveOnBottomEdge() {
         sampleRack = new ArrayList<>();
         sampleRack.add(new Tile('S'));
         sampleRack.add(new Tile(' '));
@@ -109,7 +109,7 @@ public class MoveValidatorTest {
     }
 
     @Test
-    void moveOnTopEdge() {
+    void testMoveOnTopEdge() {
         sampleRack = new ArrayList<>();
         sampleRack.add(new Tile('G'));
         sampleRack.add(new Tile('O'));
@@ -124,7 +124,7 @@ public class MoveValidatorTest {
     }
 
     @Test
-    void moveOnLeftEdge() {
+    void testMoveOnLeftEdge() {
         sampleRack = new ArrayList<>();
         sampleRack.add(new Tile('L'));
         sampleRack.add(new Tile('O'));
@@ -141,7 +141,7 @@ public class MoveValidatorTest {
     }
 
     @Test
-    void moveOnRightEdge() {
+    void testMoveOnRightEdge() {
         sampleRack = new ArrayList<>();
         sampleRack.add(new Tile('L'));
         sampleRack.add(new Tile('O'));
