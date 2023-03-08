@@ -137,7 +137,6 @@ public class MoveValidatorTest {
         Move move2 = new Move("LOK,a1,d");
         boolean result = MoveValidator.validateMove(move2, rack, board, wordList, false);
         board.placeTiles(move2);
-        board.print();
         assertTrue(result);
     }
 
@@ -155,7 +154,7 @@ public class MoveValidatorTest {
         Move move2 = new Move("LOK,o4,d");
         boolean result = MoveValidator.validateMove(move2, rack, board, wordList, false);
         board.placeTiles(move2);
-        board.print();
+
         assertTrue(result);
     }
 }

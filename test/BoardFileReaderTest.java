@@ -16,6 +16,7 @@ public class BoardFileReaderTest {
     public void testFileNotFound() {
         String filename = "board.txt";
         Exception exception = assertThrows(IllegalArgumentException.class, () -> reader.toScrabbleBoard(filename));
+
         String expectedMessage = "File not found!";
         String actualMessage = exception.getMessage();
 

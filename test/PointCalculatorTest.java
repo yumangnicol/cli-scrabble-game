@@ -27,25 +27,29 @@ public class PointCalculatorTest {
     @Test
     void calculatePointsWordPremium() {
         Move move = new Move("GIT,g8,r");
-        assertEquals(8, PointCalculator.calculatePoints(move, board));
+        int expected = 8;
+        assertEquals(expected, PointCalculator.calculatePoints(move, board));
     }
 
     @Test
     void calculatePointsLetterPremium() {
         Move move = new Move("FOO,i7,d");
-        assertEquals(11, PointCalculator.calculatePoints(move, board));
+        int expected = 11;
+        assertEquals(expected, PointCalculator.calculatePoints(move, board));
     }
 
     @Test
     void calculatePointsLetterAndWordPremium(){
         Move move = new Move("HELLO,h8,r");
-        assertEquals(18, PointCalculator.calculatePoints(move, board));
+        int expected = 18;
+        assertEquals(expected, PointCalculator.calculatePoints(move, board));
     }
 
     @Test
     void calculatePoints70bonus(){
         Move move = new Move("FUZZBOX,d8,r");
-        assertEquals(152, PointCalculator.calculatePoints(move, board));
+        int expected = 152;
+        assertEquals(expected, PointCalculator.calculatePoints(move, board));
     }
 
     @Test
@@ -54,7 +58,8 @@ public class PointCalculatorTest {
         board.placeTiles(move);
 
         Move move2 = new Move("Soo,h15,r");
-        assertEquals(24, PointCalculator.calculatePoints(move2, board));
+        int expected = 24;
+        assertEquals(expected, PointCalculator.calculatePoints(move2, board));
     }
 
     @Test
@@ -63,7 +68,8 @@ public class PointCalculatorTest {
         board.placeTiles(move);
 
         Move move2 = new Move("GO,j1,r");
-        assertEquals(5, PointCalculator.calculatePoints(move2, board));
+        int expected = 5;
+        assertEquals(expected, PointCalculator.calculatePoints(move2, board));
     }
 
     @Test
@@ -72,7 +78,8 @@ public class PointCalculatorTest {
         board.placeTiles(move);
 
         Move move2 = new Move("LOK,a1,d");
-        assertEquals(39, PointCalculator.calculatePoints(move2, board));
+        int expected = 39;
+        assertEquals(expected, PointCalculator.calculatePoints(move2, board));
     }
 
     @Test
@@ -81,27 +88,31 @@ public class PointCalculatorTest {
         board.placeTiles(move);
 
         Move move2 = new Move("LOK,o4,d");
-        assertEquals(9, PointCalculator.calculatePoints(move2, board));
+        int expected = 9;
+        assertEquals(expected, PointCalculator.calculatePoints(move2, board));
     }
 
     @Test
     void calculatePointsNegativeWordPremium() {
         board = reader.toScrabbleBoard("./test/resources/negativePremium.txt");
         Move move = new Move("GIT,g8,r");
-        assertEquals(-8, PointCalculator.calculatePoints(move, board));
+        int expected = -8;
+        assertEquals(expected, PointCalculator.calculatePoints(move, board));
     }
 
     @Test
     void calculatePointsNegativeLetterPremium() {
         board = reader.toScrabbleBoard("./test/resources/negativePremium.txt");
         Move move = new Move("FOO,i7,d");
-        assertEquals(-9, PointCalculator.calculatePoints(move, board));
+        int expected = -9;
+        assertEquals(expected, PointCalculator.calculatePoints(move, board));
     }
 
     @Test
     void calculatePointsNegativeLetterAndWordPremium(){
         board = reader.toScrabbleBoard("./test/resources/negativePremium.txt");
         Move move = new Move("HELLO,h8,r");
-        assertEquals(-10, PointCalculator.calculatePoints(move, board));
+        int expected = -10;
+        assertEquals(expected, PointCalculator.calculatePoints(move, board));
     }
 }
