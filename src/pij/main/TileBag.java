@@ -31,14 +31,17 @@ public class TileBag {
 
         // Returns empty if bag is empty
         if(this.tiles.size() == 0){
+            System.out.println("No more tiles in Tile bag!");
             return drawnLetters;
         }
 
+        // Returns remaining tiles in bag
         if(count > this.tiles.size()){
-            for (int i = 0; i < this.tiles.size(); i++) {
-                int rando = (int) (Math.random() * (this.size()-1)); // Generates random number from 0 to Length
-                drawnLetters.add(this.tiles.remove(rando));
+            int toDraw = this.size();
+            for (int i = 0; i < toDraw; i++) {
+                drawnLetters.add(this.tiles.remove(0));
             }
+            return drawnLetters;
         }
 
         for(int i = 0; i < count; i++){
