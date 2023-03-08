@@ -8,7 +8,7 @@ import java.util.Optional;
 
 public class MoveGenerator {
 
-    public static Move scanBoardForMove(TileRack rack, ScrabbleBoard board, WordList wordList){
+    public static Move generateSucceedingMove(TileRack rack, ScrabbleBoard board, WordList wordList){
         for (int row = 1; row < board.length(); row++) {
             for (int col = 1; col < board.length(); col++) {
 
@@ -92,7 +92,7 @@ public class MoveGenerator {
         return space;
     }
 
-    public static Move makeFirstMove(TileRack rack, ScrabbleBoard board, WordList wordList){
+    public static Move generateFirstMove(TileRack rack, ScrabbleBoard board, WordList wordList){
         List<String> validMoves = WordGenerator.generateWords(rack.getTiles(), 7, "", wordList);
         Optional<String> optionalMove = validMoves.stream().max(Comparator.comparing(String::length));
         if(validMoves.size() > 0){

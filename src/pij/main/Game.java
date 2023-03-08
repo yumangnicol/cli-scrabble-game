@@ -142,8 +142,8 @@ public class Game {
         System.out.println("Computer Turn!");
 
         Move move = isFirstTurn ?
-                MoveGenerator.makeFirstMove(computer.getRack(), gameBoard, wordList) :
-                MoveGenerator.scanBoardForMove(computer.getRack(), gameBoard, wordList);
+                MoveGenerator.generateFirstMove(computer.getRack(), gameBoard, wordList) :
+                MoveGenerator.generateSucceedingMove(computer.getRack(), gameBoard, wordList);
 
         if(move == null){
             computer.incrementConsecutivePass();
