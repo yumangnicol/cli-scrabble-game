@@ -12,18 +12,18 @@ public class TileRack {
         this.tiles = new ArrayList<>();
     }
 
-    public boolean refill(TileBag tileBag, int count){
-        if(count == 0 || count > this.getRackSpace()) {
-            return false;
+    public void refill(TileBag tileBag, int count){
+        if(count > this.getRackSpace()) {
+            System.out.println("Cannot refill beyond 7 tiles");
+            return;
         }
 
         ArrayList<Tile> drawn = tileBag.drawTiles(count);
-        if(drawn.size() == 0){
-            return false;
+        if(drawn.isEmpty()){
+            return;
         }
 
         this.tiles.addAll(drawn);
-        return true;
     }
 
     public void removeAll(ArrayList<Tile> tiles){
