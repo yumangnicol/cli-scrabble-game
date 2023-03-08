@@ -32,10 +32,18 @@ public class WordGeneratorTest {
     }
 
     @Test
-    void sampleTest() {
+    void testGenerateWordsGivenStart() {
+        var list = WordGenerator.generateWords(tiles, 7, "Z", wordList);
+        System.out.println(list);
+        int expected = 8;
+        assertEquals(expected, list.size());
+    }
+
+    @Test
+    void testGenerateWordsBlankStart() {
         var list = WordGenerator.generateWords(tiles, 7, "", wordList);
         System.out.println(list);
-        int result = 4;
-        assertEquals(result, list.size());
+        int expected = 55;
+        assertEquals(expected, list.size());
     }
 }
