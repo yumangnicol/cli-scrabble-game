@@ -169,7 +169,7 @@ public class Game {
     }
 
     private void playerRemoveAndRefillTiles(Player player, Move move){
-        player.getRack().removeTiles(move.getTiles());
+        player.getRack().removeAll(move.getTiles());
         if(!player.getRack().refill(this.bag, move.getTiles().size())){
             System.out.println("No more tiles to refill. The bag is empty");
         }

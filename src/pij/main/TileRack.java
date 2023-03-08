@@ -3,6 +3,7 @@ package pij.main;
 import pij.main.utils.Constants;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class TileRack {
     private ArrayList<Tile> tiles;
@@ -25,39 +26,24 @@ public class TileRack {
         return true;
     }
 
-    public void removeTiles(ArrayList<Tile> tiles){
-        for (Tile t : tiles) {
-            removeTile(t);
-        }
-    }
+    public void removeAll(ArrayList<Tile> tiles){
+        for (Tile tile : tiles) {
+            int countToRemove = Collections.frequency(tiles, tile);
+            int countOnRack = Collections.frequency(this.tiles, tile);
 
-    private void removeTile(Tile tile){
-        for (int i = 0; i < this.tiles.size(); i++) {
-            if (tile.getLetter() == this.tiles.get(i).getLetter() || (Character.isLowerCase(tile.getLetter()) && this.tiles.get(i).getLetter() == ' ')) {
-                this.tiles.remove(i);
-                return; // returns so that it only removes the first instance of the tile
-            }
-        }
-    }
-
-    private void removeTile(Tile tile, ArrayList<Tile> tiles){
-        // Note: Changes the state of the ArrayList passed
-        for (int j = 0; j < tiles.size(); j++) {
-            if (tile.getLetter() == tiles.get(j).getLetter() || (Character.isLowerCase(tile.getLetter()) && tiles.get(j).getLetter() == ' ')){
-                tiles.remove(j);
-                return; // returns so that it only removes the first instance of the tile
+            for (int i = 0; i < countToRemove && i < countOnRack; i++) {
+                this.tiles.remove(tile);
             }
         }
     }
 
     public boolean containsAll(ArrayList<Tile> tiles){
-        ArrayList<Tile> temp = (ArrayList<Tile>) this.tiles.clone();
-
         for (Tile tile : tiles) {
-            this.removeTile(tile, temp);
+            if (Collections.frequency(this.tiles, tile) < Collections.frequency(tiles, tile)) {
+                return false;
+            }
         }
-
-        return temp.size() == (this.tiles.size() - tiles.size());
+        return true;
     }
 
     private int getRackSpace() {
