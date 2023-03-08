@@ -73,14 +73,14 @@ public class TileRackTest {
         tiles.add(new Tile('C'));
         tiles.add(new Tile('D'));
         tiles.add(new Tile('E'));
-        tiles.add(new Tile('F'));
+        tiles.add(new Tile(' '));
         tiles.add(new Tile('A'));
         rack.setTiles(tiles);
 
         ArrayList<Tile> tiles2 = new ArrayList<>();
         tiles2.add(new Tile('A'));
         tiles2.add(new Tile('E'));
-        tiles2.add(new Tile('F'));
+        tiles2.add(new Tile(' '));
         rack.removeAll(tiles2);
 
         int expected = 4;
