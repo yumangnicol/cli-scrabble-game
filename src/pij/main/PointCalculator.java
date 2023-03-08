@@ -57,7 +57,7 @@ public class PointCalculator {
             currCol += colDelta;
         }
 
-        return moveLength == 7 ? (total * premiumWordMultiplier) + Constants.SEVEN_LETTER_MOVE_BONUS : total * premiumWordMultiplier;
+        return moveLength == Constants.MAX_RACK_SIZE ? (total * premiumWordMultiplier) + Constants.SEVEN_LETTER_MOVE_BONUS : total * premiumWordMultiplier;
     }
 
     private static int getPremiumValue(ScrabbleBoard board, int row, int col){
