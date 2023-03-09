@@ -30,7 +30,7 @@ public class TileRack {
         ArrayList<Tile> modifiedTiles = replaceLowerCaseWithWildCard(tiles);
 
         for (Tile tile : modifiedTiles) {
-            int countToRemove = Collections.frequency(tiles, tile);
+            int countToRemove = Collections.frequency(modifiedTiles, tile);
             int countOnRack = Collections.frequency(this.tiles, tile);
 
             for (int i = 0; i < countToRemove && i < countOnRack; i++) {
