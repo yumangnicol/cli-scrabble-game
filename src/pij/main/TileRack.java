@@ -27,7 +27,9 @@ public class TileRack {
     }
 
     public void removeAll(ArrayList<Tile> tiles){
-        for (Tile tile : tiles) {
+        ArrayList<Tile> modifiedTiles = replaceLowerCaseWithWildCard(tiles);
+
+        for (Tile tile : modifiedTiles) {
             int countToRemove = Collections.frequency(tiles, tile);
             int countOnRack = Collections.frequency(this.tiles, tile);
 
@@ -38,8 +40,10 @@ public class TileRack {
     }
 
     public boolean containsAll(ArrayList<Tile> tiles){
-        for (Tile tile : tiles) {
-            if (Collections.frequency(this.tiles, tile) < Collections.frequency(tiles, tile)) {
+        ArrayList<Tile> modifiedTiles = replaceLowerCaseWithWildCard(tiles);
+
+        for (Tile tile : modifiedTiles) {
+            if (Collections.frequency(this.tiles, tile) < Collections.frequency(modifiedTiles, tile)) {
                 return false;
             }
         }
@@ -74,5 +78,17 @@ public class TileRack {
             sb.append(']');
         }
         System.out.println(sb);
+    }
+
+    private ArrayList<Tile> replaceLowerCaseWithWildCard(ArrayList<Tile> tiles){
+        ArrayList<Tile> modifiedTiles = new ArrayList<>();
+        for (Tile tile : tiles) {
+            if (Character.isLowerCase(tile.getLetter())) {
+                modifiedTiles.add(new Tile(' '));
+            } else {
+                modifiedTiles.add(tile);
+            }
+        }
+        return modifiedTiles;
     }
 }
