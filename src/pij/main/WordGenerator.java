@@ -37,7 +37,7 @@ public class WordGenerator {
         }
     }
 
-    public static int getCount(Tile tile, ArrayList<Tile> tiles){
+    private static int getCount(Tile tile, ArrayList<Tile> tiles){
         int count = 0;
         for (Tile t : tiles) {
             if (t.equals(tile)){
