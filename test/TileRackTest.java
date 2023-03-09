@@ -26,6 +26,37 @@ public class TileRackTest {
     }
 
     @Test
+    void testRefill() {
+        rack.refill(bag, 7);
+        int expected = 7;
+        assertEquals(expected, rack.size());
+    }
+
+    @Test
+    void testRefillOverRackSpace() {
+        rack.refill(bag, 5);
+        rack.refill(bag, 3);
+        int expected = 5;
+        assertEquals(expected, rack.size());
+    }
+
+    @Test
+    void testRefillEmptyBag() {
+        bag.drawTiles(100);
+        rack.refill(bag, 7);
+        int expected = 0;
+        assertEquals(expected, rack.size());
+    }
+
+    @Test
+    void testRefillCountGreaterThanBagSize() {
+        bag.drawTiles(98);
+        rack.refill(bag, 7);
+        int expected = 2;
+        assertEquals(expected, rack.size());
+    }
+
+    @Test
     void testContainsAllTrue() {
         ArrayList<Tile> tiles = new ArrayList<>();
         tiles.add(new Tile('A'));
