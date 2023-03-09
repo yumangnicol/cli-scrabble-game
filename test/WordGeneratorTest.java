@@ -34,7 +34,6 @@ public class WordGeneratorTest {
     @Test
     void testGenerateWordsGivenStart() {
         var list = WordGenerator.generateWords(tiles, 7, "Z", wordList);
-        System.out.println(list);
         int expected = 8;
         assertEquals(expected, list.size());
     }
@@ -42,8 +41,23 @@ public class WordGeneratorTest {
     @Test
     void testGenerateWordsBlankStart() {
         var list = WordGenerator.generateWords(tiles, 7, "", wordList);
-        System.out.println(list);
         int expected = 55;
+        assertEquals(expected, list.size());
+    }
+
+    @Test
+    void testGenerateWordsWithWildCard() {
+        tiles = new ArrayList<>();
+        tiles.add(new Tile('D'));
+        tiles.add(new Tile('A'));
+        tiles.add(new Tile('B'));
+        tiles.add(new Tile('R'));
+        tiles.add(new Tile(' '));
+        tiles.add(new Tile('Z'));
+        tiles.add(new Tile('E'));
+
+        var list = WordGenerator.generateWords(tiles, 7, "", wordList);
+        int expected = 1247;
         assertEquals(expected, list.size());
     }
 }
