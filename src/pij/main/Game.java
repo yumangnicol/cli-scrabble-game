@@ -93,7 +93,7 @@ public class Game {
         }
     }
 
-    public void humanTurn(){
+    private void humanTurn(){
         String moveString;
         Move move;
         boolean validMove = false;
@@ -138,7 +138,7 @@ public class Game {
         }
     }
 
-    public void computerTurn(){
+    private void computerTurn(){
         System.out.println("Computer Turn!");
 
         Move move = isFirstTurn ?
