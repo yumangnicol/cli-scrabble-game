@@ -11,7 +11,7 @@ public class MoveTest {
         String expectedMessage = "Move not accepted! Invalid string format";
         String actualMessage = exception.getMessage();
 
-        assertEquals(actualMessage, expectedMessage);
+        assertEquals(expectedMessage, actualMessage);
     }
 
     @Test
@@ -22,7 +22,7 @@ public class MoveTest {
         String expectedMessage = "Move not accepted! Played word should not contain special characters";
         String actualMessage = exception.getMessage();
 
-        assertEquals(actualMessage, expectedMessage);
+        assertEquals(expectedMessage, actualMessage);
     }
 
     @Test
@@ -33,7 +33,7 @@ public class MoveTest {
         String expectedMessage = "Move not accepted! Column should be in lower-case";
         String actualMessage = exception.getMessage();
 
-        assertEquals(actualMessage, expectedMessage);
+        assertEquals(expectedMessage, actualMessage);
     }
 
     @Test
@@ -44,7 +44,7 @@ public class MoveTest {
         String expectedMessage = "Move not accepted! Row should be in correct int format";
         String actualMessage = exception.getMessage();
 
-        assertEquals(actualMessage, expectedMessage);
+        assertEquals(expectedMessage, actualMessage);
     }
 
     @Test
@@ -55,7 +55,7 @@ public class MoveTest {
         String expectedMessage = "Move not accepted! Direction should be in either r - right or d - down only";
         String actualMessage = exception.getMessage();
 
-        assertEquals(actualMessage, expectedMessage);
+        assertEquals(expectedMessage, actualMessage);
     }
 
     @Test
@@ -66,6 +66,6 @@ public class MoveTest {
         String expectedMessage = "The move is:    Word: GIT at position: g8, direction: right";
         String actualMessage = newMove.toString();
 
-        assertEquals(actualMessage, expectedMessage);
+        assertEquals(expectedMessage, actualMessage);
     }
 }
