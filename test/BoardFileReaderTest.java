@@ -1,6 +1,7 @@
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import pij.main.BoardFileReader;
+import pij.main.ScrabbleBoard;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -63,6 +64,33 @@ public class BoardFileReaderTest {
         String expectedMessage = "File not accepted. Board size and items do not match! ";
         String actualMessage = exception.getMessage();
         assertEquals(expectedMessage, actualMessage);
+    }
+
+    @Test
+    public void testEvenBoard() {
+        String filename = "./test/resources/evenBoard.txt";
+        ScrabbleBoard board = reader.toScrabbleBoard(filename);
+
+        int expected = 16;
+        assertEquals(expected, board.length());
+    }
+
+    @Test
+    public void testOddBoard() {
+        String filename = "./test/resources/oddBoard.txt";
+        ScrabbleBoard board = reader.toScrabbleBoard(filename);
+
+        int expected = 15;
+        assertEquals(expected, board.length());
+    }
+
+    @Test
+    public void testNegativePremiumBoard() {
+        String filename = "./test/resources/negativePremium.txt";
+        ScrabbleBoard board = reader.toScrabbleBoard(filename);
+
+        int expected = 15;
+        assertEquals(expected, board.length());
     }
 
 }
