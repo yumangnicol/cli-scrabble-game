@@ -25,7 +25,7 @@ public class TileRack {
 
     /**
      * Checks if given tiles are present in the rack
-     * @param tiles list of tiles to check if in rack
+     * @param tiles the list of tiles to check if in rack
      * @return true if all tiles are present, false if otherwise
      */
     public boolean containsAll(ArrayList<Tile> tiles){
@@ -75,8 +75,8 @@ public class TileRack {
 
     /**
      * Replenishes the rack with new tiles from a tile bag
-     * @param tileBag tile bag to draw new tiles
-     * @param count number of tiles to draw
+     * @param tileBag the tile bag to draw new tiles
+     * @param count the number of tiles to draw
      */
     public void refill(TileBag tileBag, int count){
         if(count > this.getRackSpace()) {
@@ -94,7 +94,7 @@ public class TileRack {
 
     /**
      * Removes tiles from rack
-     * @param tiles list of tiles to remove
+     * @param tiles the list of tiles to remove
      */
     public void removeAll(List<Tile> tiles){
         List<Tile> modifiedTiles = replaceLowerCaseWithWildCard(tiles);
@@ -114,7 +114,7 @@ public class TileRack {
     /**
      * Modifies a list of tiles.
      * Lowercase letter tiles are modified as wild cards ' '
-     * @param tiles list of tiles to modify
+     * @param tiles the list of tiles to modify
      * @return a list of tiles that contain wild cards
      */
     private List<Tile> replaceLowerCaseWithWildCard(List<Tile> tiles){
@@ -131,7 +131,7 @@ public class TileRack {
 
     /**
      * Sets tiles in the rack
-     * @param tiles list of tiles to set
+     * @param tiles the list of tiles to set
      */
     public void setTiles(ArrayList<Tile> tiles) {
         this.tiles = tiles;
