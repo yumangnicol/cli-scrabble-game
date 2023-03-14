@@ -28,7 +28,7 @@ public class TileRack {
      * @param tiles the list of tiles to check if in rack
      * @return true if all tiles are present, false if otherwise
      */
-    public boolean containsAll(ArrayList<Tile> tiles){
+    public boolean containsAll(List<Tile> tiles){
         List<Tile> modifiedTiles = replaceLowerCaseWithWildCard(tiles);
         for (Tile tile : modifiedTiles) {
             // Check if rack has the same amount each tile
