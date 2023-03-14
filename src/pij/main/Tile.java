@@ -37,7 +37,7 @@ public class Tile {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Tile tile = (Tile) o;
-        return letter == tile.letter && value == tile.value;
+        return this.letter == tile.letter && this.value == tile.value;
     }
 
     /**
@@ -45,7 +45,7 @@ public class Tile {
      * @return letter of tile
      */
     public char getLetter() {
-        return letter;
+        return this.letter;
     }
 
     /**
@@ -53,7 +53,7 @@ public class Tile {
      * @return value of tile
      */
     public int getValue() {
-        return value;
+        return this.value;
     }
 
     /**
@@ -62,6 +62,6 @@ public class Tile {
      */
     @Override
     public int hashCode() {
-        return Objects.hash(letter, value);
+        return Objects.hash(this.letter, this.value);
     }
 }
