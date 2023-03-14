@@ -29,12 +29,12 @@ public class WordGenerator {
     /**
      * Recursive method that builds all possible and valid words
      * from the given parameters
-     * @param currentWord current state of the word to be built
-     * @param tiles list of tiles to use
-     * @param maxLength words can be generated up to this max length
-     * @param wordList list to check if generated word is valid
-     * @param words list of words generated
-     * @param usedTiles map of tiles already used in the currentWord
+     * @param currentWord the current state of the word to be built
+     * @param tiles the list of tiles to use
+     * @param maxLength the words can be generated up to this max length
+     * @param wordList the list to check if generated word is valid
+     * @param words the list of words generated
+     * @param usedTiles the map of tiles already used in the currentWord
      */
     private static void generateWordsHelper(String currentWord, List<Tile> tiles, int maxLength, WordList wordList, ArrayList<String> words, HashMap<Tile, Integer> usedTiles) {
         if (currentWord.length() > maxLength) {
@@ -66,8 +66,8 @@ public class WordGenerator {
 
     /**
      * Returns the count of a tile in the list
-     * @param tile tile to be counted
-     * @param tiles list of tiles
+     * @param tile the tile to be counted
+     * @param tiles the list of tiles
      * @return frequency of tile in the list
      */
     private static int getCount(Tile tile, List<Tile> tiles){
