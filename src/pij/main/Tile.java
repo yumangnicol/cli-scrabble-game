@@ -21,7 +21,7 @@ public class Tile {
     /**
      * Constructor: creates a tile from a given letter or wildcard
      * The point value of a tile is set based on the TileSettings
-     * @param letter the letter character to create a tile
+     * @param letter the letter character
      */
     public Tile(char letter) {
         this.letter = letter;
