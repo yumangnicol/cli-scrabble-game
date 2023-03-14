@@ -1,15 +1,41 @@
 package pij.main;
 
 import pij.main.utils.Constants;
-
 import java.util.ArrayList;
+import java.util.List;
 
+/**
+ * Represents a move in a scrabble game
+ * @author Nicol Luis Yumang
+ */
 public class Move {
-    private final ArrayList<Tile> tiles;
-    private final int row;
+
+    /**
+     * The list of tiles used in the move
+     */
+    private final List<Tile> tiles;
+
+    /**
+     * The starting column of the move
+     */
     private final int col;
+
+    /**
+     * The starting row of the move
+     */
+    private final int row;
+
+    /**
+     * Determines the direction of the move
+     * True if going right, false if going down
+     */
     private final boolean goingRight;
 
+    /**
+     * Constructor: Creates a new move
+     * The format and contents of the moveString is validated during construction
+     * @param moveString the string to create a new move from
+     */
     public Move(String moveString) {
         final int ASCII_SUBTRAHEND = 96;
         String[] move = moveString.split(",");
@@ -44,22 +70,42 @@ public class Move {
         this.goingRight = move[2].charAt(0) == 'r';
     }
 
-    public ArrayList<Tile> getTiles() {
-        return tiles;
-    }
-
-    public int getRow() {
-        return row;
-    }
-
+    /**
+     * Gets the starting column of the move
+     * @return the starting column of the move
+     */
     public int getCol() {
         return col;
     }
 
+    /**
+     * Gets the starting Row of the move
+     * @return the starting Row of the move
+     */
+    public int getRow() {
+        return row;
+    }
+
+    /**
+     * Gets the list of tiles used in the move
+     * @return the list of tiles used in the move
+     */
+    public List<Tile> getTiles() {
+        return tiles;
+    }
+
+    /**
+     * Gets the direction of the move
+     * @return the direction of the move
+     */
     public boolean isGoingRight() {
         return goingRight;
     }
 
+    /**
+     * Create a prettified summary of the move
+     * @return prettified summary of the move
+     */
     @Override
     public String toString() {
         StringBuilder moveString = new StringBuilder();
