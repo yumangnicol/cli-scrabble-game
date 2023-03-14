@@ -2,6 +2,7 @@ package pij.main;
 
 /**
  * Represents a player in the scrabble game
+ * @author Nicol Luis Yumang
  */
 public class Player {
     /**
