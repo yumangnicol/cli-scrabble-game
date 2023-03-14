@@ -6,7 +6,16 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * A reader that reads and translates files to ScrabbleBoard objects
+ * @author Nicol Luis Yumang
+ */
 public class BoardFileReader {
+    /**
+     * Checks if number provided in the file is between 12 and 26
+     * @param strSize the string provided in the file
+     * @return true if valid, false otherwise
+     */
     private boolean isValidBoardSize(String strSize){
         int size;
         if(strSize == null) {
@@ -19,11 +28,25 @@ public class BoardFileReader {
         }
         return size >= Constants.MIN_BOARD_SIZE && size <= Constants.MAX_BOARD_SIZE;
     }
+
+    /**
+     * Checks if character is a valid to be translated in the board
+     * Valid characters are spaces, ., (, ), {, }, -, 0-9
+     * @param value integer value of a character in the ASCII table
+     * @return true if valid, false otherwise
+     */
     private boolean isValidChar(int value){
         char c = (char) value;
         return c == '\n' || c == '.' || c == '(' || c == ')' || c == '{' || c == '}' || c == '-' ||
                 (value >= Constants.CHAR_NUMBER_0_INT_VALUE && value <= Constants.CHAR_NUMBER_9_INT_VALUE);
     }
+
+    /**
+     * Reads a file and validates its format
+     * @param filePath the path to the file to be read
+     * @return a list where each element represents a valid square in a scrabble board
+     * @throws IllegalArgumentException if the format is not valid
+     */
     private List<String> readAndValidate(String filePath) throws IllegalArgumentException {
         File file = new File(filePath);
         List<String> boardSquares = new ArrayList<>();
@@ -72,6 +95,12 @@ public class BoardFileReader {
 
         return boardSquares;
     }
+
+    /**
+     * Reads a file and validates its format, then translates this to a scrabbleBoard object
+     * @param filePath the path to the file to be read
+     * @return new ScrabbleBoard object
+     */
     public ScrabbleBoard toScrabbleBoard(String filePath) {
         List<String> boardElements = readAndValidate(filePath);
 
@@ -92,6 +121,7 @@ public class BoardFileReader {
 
         // Inputs boardElements to the boardMatrix
         for(int i = 1; i <= boardSize; i++){
+            // Adds the row numbers on the 0 position of the rows
             boardMatrix[i][0] = "" + i;
             for(int j = 1; j <= boardSize; j++){
                 boardMatrix[i][j] = boardElements.get(iterator + 1);
