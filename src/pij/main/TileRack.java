@@ -53,7 +53,7 @@ public class TileRack {
      * @return list of tiles
      */
     public List<Tile> getTiles() {
-        return tiles;
+        return this.tiles;
     }
 
     /**
@@ -62,7 +62,7 @@ public class TileRack {
     public void print(){
         StringBuilder sb = new StringBuilder();
         String prefix = "";
-        for (Tile t : tiles) {
+        for (Tile t : this.tiles) {
             sb.append(prefix);
             prefix = ",";
             sb.append('[');
@@ -142,8 +142,6 @@ public class TileRack {
      * @return number of tiles in the rack
      */
     public int size() {
-        return tiles.size();
+        return this.tiles.size();
     }
-
-
 }
