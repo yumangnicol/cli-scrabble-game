@@ -16,7 +16,7 @@ public class WordList {
 
     /**
      * Constructor: List of valid words
-     * @param fileName path to file
+     * @param fileName the path to file
      */
     public WordList(String fileName) {
         wordList = new HashSet<>();
@@ -35,7 +35,7 @@ public class WordList {
 
     /**
      * Check if the word is found in the list
-     * @param word string to check in word list
+     * @param word the word to check in word list
      * @return true if found and false if not
      */
     public  boolean contains(String word){
