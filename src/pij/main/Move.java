@@ -75,7 +75,7 @@ public class Move {
      * @return the starting column of the move
      */
     public int getCol() {
-        return col;
+        return this.col;
     }
 
     /**
@@ -83,7 +83,7 @@ public class Move {
      * @return the starting Row of the move
      */
     public int getRow() {
-        return row;
+        return this.row;
     }
 
     /**
@@ -91,7 +91,7 @@ public class Move {
      * @return the list of tiles used in the move
      */
     public List<Tile> getTiles() {
-        return tiles;
+        return this.tiles;
     }
 
     /**
@@ -99,7 +99,7 @@ public class Move {
      * @return the direction of the move
      */
     public boolean isGoingRight() {
-        return goingRight;
+        return this.goingRight;
     }
 
     /**
@@ -111,17 +111,17 @@ public class Move {
         StringBuilder moveString = new StringBuilder();
 
         moveString.append("The move is:    Word: ");
-        for (Tile t : tiles) {
+        for (Tile t : this.tiles) {
             moveString.append(t.getLetter());
         }
 
         moveString.append(" at position: ");
         char letterCol = (char) (this.col + Constants.CHAR_INT_VALUE_BEFORE_SMALL_LETTER_A);
         moveString.append(letterCol);
-        moveString.append(row);
+        moveString.append(this.row);
 
         moveString.append(", direction: ");
-        String direction = isGoingRight() ? "right" : "left";
+        String direction = this.isGoingRight() ? "right" : "left";
         moveString.append(direction);
 
         return moveString.toString();
