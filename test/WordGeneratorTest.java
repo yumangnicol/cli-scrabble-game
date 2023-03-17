@@ -14,7 +14,7 @@ public class WordGeneratorTest {
 
     @BeforeEach
     void setUp() {
-        wordList = new WordList("./src/resources/wordlist.txt");
+        wordList = new WordList("./resources/wordlist.txt");
         tiles = new ArrayList<>();
         tiles.add(new Tile('N'));
         tiles.add(new Tile('A'));

@@ -15,7 +15,7 @@ public class PointCalculatorTest {
     @BeforeEach
     void setUp() {
         reader = new BoardFileReader();
-        board = reader.toScrabbleBoard("./src/resources/defaultBoard.txt");
+        board = reader.toScrabbleBoard("./resources/defaultBoard.txt");
     }
 
     @AfterEach

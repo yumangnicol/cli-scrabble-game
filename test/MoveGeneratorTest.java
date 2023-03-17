@@ -16,9 +16,9 @@ public class MoveGeneratorTest {
 
     @BeforeEach
     void setUp() {
-        wordList = new WordList("./src/resources/wordlist.txt");
+        wordList = new WordList("./resources/wordlist.txt");
         reader = new BoardFileReader();
-        board = reader.toScrabbleBoard("./src/resources/defaultBoard.txt");
+        board = reader.toScrabbleBoard("./resources/defaultBoard.txt");
         bag = new TileBag();
         computer = new Player();
     }
