@@ -3,7 +3,15 @@ package pij.main.utils;
 import java.util.AbstractMap;
 import java.util.Map;
 
+/**
+ * A helper class that defines all the tiles in the scrabble game
+ * including a tile's count and its numerical value
+ */
 public class TileSettings {
+
+    /**
+     * A map that defines the value of each tile
+     */
     private static final Map<Character, Integer> letterValue = Map.ofEntries(
             new AbstractMap.SimpleEntry<>('A', 1),
             new AbstractMap.SimpleEntry<>('B', 3),
@@ -34,6 +42,9 @@ public class TileSettings {
             new AbstractMap.SimpleEntry<>(' ', 3)
     );
 
+    /**
+     * A map that defines frequency of each tile
+     */
     private static final Map<Character, Integer> letterCount= Map.ofEntries(
             new AbstractMap.SimpleEntry<>('A', 9),
             new AbstractMap.SimpleEntry<>('B', 2),
