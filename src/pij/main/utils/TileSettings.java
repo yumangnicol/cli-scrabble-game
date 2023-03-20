@@ -10,7 +10,7 @@ import java.util.Map;
 public class TileSettings {
 
     /**
-     * A map that defines the value of each tile
+     * A map that defines the numerical value of each tile
      */
     private static final Map<Character, Integer> letterValue = Map.ofEntries(
             new AbstractMap.SimpleEntry<>('A', 1),
@@ -75,10 +75,20 @@ public class TileSettings {
             new AbstractMap.SimpleEntry<>(' ', 2)
     );
 
+    /**
+     * Gets the numerical value of a letter
+     * @param letter the letter of a tile
+     * @return the value of the letter
+     */
     public static int getLetterValue(char letter) {
         return letterValue.get(letter);
     }
 
+    /**
+     * Gets the frequency of a letter
+     * @param letter the letter of a tile
+     * @return the frequency of the letter
+     */
     public static int getLetterCount(char letter) {
         return letterCount.get(letter);
     }
