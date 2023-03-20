@@ -1,5 +1,7 @@
 package pij.main;
 
+import pij.main.utils.Constants;
+
 /**
  * Represents the board in a scrabble game
  * @author Nicol Luis Yumang
@@ -27,12 +29,18 @@ public class ScrabbleBoard {
 
     /**
      * Gets the value of a square in the scrabble board
+     * If the square is equivalent to a tile, the letter
+     * is returned without the value
      * @param row the row of the square
      * @param col the column of the square
      * @return the value in the square
      */
     public String getSquareValue(int row, int col){
-        return this.boardMatrix[row][col];
+        String value = this.boardMatrix[row][col];
+        if (value.matches(Constants.BOARD_TILE_REGEX_FORMAT)) {
+            return value.substring(0, 1);
+        }
+        return value;
     }
 
     /**
@@ -126,7 +134,7 @@ public class ScrabbleBoard {
 
         while (currCount < letterCount){
             if(this.isSquareEmpty(currRow, currCol)){
-                this.boardMatrix[currRow][currCol] = "" + move.getTiles().get(currCount).getLetter();
+                this.boardMatrix[currRow][currCol] = "" + move.getTiles().get(currCount).getLetter() + move.getTiles().get(currCount).getValue();
                 currCount++;
             }
             currRow += rowDelta;

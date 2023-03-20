@@ -5,6 +5,7 @@ public class Constants {
     public static final String DEFAULT_WORD_LIST_FILE = "wordlist.txt";
     public static final String PREMIUM_SQUARE_REGEX_FORMAT = "\\(\\-[1-9]|\\{\\-[1-9]|\\([0-9]{2}|\\{[0-9]{2}|\\([0-9]\\)|\\{[0-9]\\}";
     public static final String MOVE_STRING_REGEX_FORMAT = "^[a-zA-Z]*$";
+    public static final String BOARD_TILE_REGEX_FORMAT = "[a-zA-Z][0-9]{1,2}";
     public static final int MIN_BOARD_SIZE = 12;
     public static final int MAX_BOARD_SIZE = 26;
     public static final int CHAR_CAPITAL_LETTER_A_INT_VALUE = 65;

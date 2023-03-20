@@ -25,7 +25,7 @@ public class Tile {
      */
     public Tile(char letter) {
         this.letter = letter;
-        this.value = Character.isLowerCase(letter) ? 3 : TileSettings.getLetterValue(letter);
+        this.value = Character.isLowerCase(letter) ? TileSettings.getLetterValue(' ') : TileSettings.getLetterValue(letter);
     }
 
     /**
