@@ -1,7 +1,10 @@
 
 # Command Line Interface Scrabble Game
 
-This project was made as part of the coursework in the Programming in Java module at BBK University of London
+This project was made as part of the coursework in the Programming in Java module at BBK, University of London.
+
+Technologies Used:
+- Java 17
 
 ## Gameplay
 The first move is done by the human player, by combining two or more of their letters to a word. The word is placed on the board to read either to the right or downwards, with one letter on the centre square. Like in Scrabble, diagonal words are not possible in ScraBBKle. Whenever a tile is placed on a square, the letter and the value of the tile replace the square on the board. If the value S from the intro is an even number, there are four candidates for the role of "centre square". In ScraBBKle, the top left of these four squares (i.e., the one with minimal column and row) is the centre square for the purposes of the first move.
